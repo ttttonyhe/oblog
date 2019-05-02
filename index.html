@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OBlog</title>
+    <script src="https://static.ouorz.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="https://static.ouorz.com/vue.min.js"></script>
+    <script>Vue.config.devtools = true</script>
+    <script type="text/javascript" src="https://static.ouorz.com/axios.min.js"></script>
+    <script src="https://cdn.bootcss.com/markdown-it/8.4.2/markdown-it.min.js"></script>
+</head>
+<body>
+    <div 
+        id="view"
+        style="
+            width: 60%;
+            margin: 10vh auto;
+        "
+    >
+        <div 
+            v-for="post in posts" 
+            style="
+                box-shadow: rgba(0, 0, 0, 0.09) 0px 0px 8px 0px;
+                padding: 20px 40px;
+                margin-bottom:20px
+            "
+        >
+            <p>
+                <em>{{ post.info.Author }}</em>
+                <em>{{ post.info.Date }}</em>
+                <em>{{ post.info.Cate }}</em>
+                <em style="margin-right:5px" v-for="tag in post.info.Tags.split(',')">{{ tag }}</em>
+            </p>
+            <div v-html="md.render(post.content)"></div>
+        </div>
+    </div>
+    <script>
+        var md = window.markdownit();
+        new Vue({
+            el : '#view',
+            data(){
+                return{
+                    loading : 1,
+                    posts : []
+                }
+            },
+            mounted(){
+                axios.get('get_posts.php')
+                .then(e=>{
+                    this.posts = e.data;
+                })
+            }
+        })
+    </script>
+</body>
+</html>
