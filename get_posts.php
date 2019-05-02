@@ -4,7 +4,7 @@ $filesnames = scandir($host); //得到所有的文件
 $i = 0;
 $data = [];
 
-class fy {
+class fy{
     function infofy($string){
         return $string = str_replace("\n","",$string);
     }
