@@ -1,0 +1,98 @@
+body{
+    margin: 0px;
+    font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+.side-blog-author .el-card__body{
+    padding: 0px !important;
+}
+
+.side-blog-author .side-author-banner{
+    background-image: url(https://i.loli.net/2019/05/02/5ccaea1daaf36.jpg);background-position: center;background-repeat: no-repeat;background-size: cover;height: 150px;
+}
+
+.side-blog-author .side-author-avatar{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.side-blog-author .side-author-avatar img{
+    width: 100px;
+    height: 100px;
+    border: 2px solid #eee;
+    border-radius: 50%;
+    margin-top: -50px;
+}
+
+.side-author-info h2{
+    margin: 10px 0 2px 0;
+    font-size: 2rem;
+}
+
+.side-author-info p{
+    margin-top: 0px;
+    font-size: 1.2rem;
+    color: #888;
+    letter-spacing: .3px;
+    margin-bottom: 20px;
+}
+
+.side-author-info em{
+    font-style: normal;
+    color: #409eff;
+    font-size: 1.1rem;
+    border: 1px solid #409eff;
+    border-radius: 4px;
+    padding: 5px 9px;
+}
+
+.stream-card{
+    padding: 20px 40px 40px 40px;
+    margin-bottom:20px
+}
+
+.stream-info{
+    overflow-y: auto;
+    white-space: nowrap;
+}
+
+.stream-info em{
+    color: rgb(83, 121, 160);
+    background: rgb(217, 236, 255);
+    padding: 4px 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    font-style: normal;
+    font-size: 1.2rem;
+    margin-right: 5px;
+    line-height: 2.6;
+}
+
+.stream-card h1{
+    font-size: 2.2rem;
+    margin-top: 0px;
+    margin-bottom: -5px;
+}
+
+.stream-card p{
+    color: #666;
+    letter-spacing: .3px;
+    font-size: 1.2rem;
+}
+
+.stream-view{
+    border: 2px solid #03a9f4;
+    color: #03a9f4;
+    border-radius: 4px;
+    padding: 4px 16px;
+    font-weight: 500;
+    letter-spacing: .2px;
+}
+
+.stream-content{
+    margin-bottom: 30px;
+}
