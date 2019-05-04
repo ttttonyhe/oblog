@@ -16,24 +16,33 @@
     <script type="text/javascript" src="element/index.js"></script>
     <link rel="stylesheet" type="text/css" href="element/index.css">
     <link rel="stylesheet" type="text/css" href="style.css">
-    </link>
+    <script src="jquery.goup.js"></script>
+    <link type="text/css" rel="stylesheet" href="caomei/style.css">
 </head>
 
 <body>
-    <div id="view">
-        <el-menu class="el-menu-demo" mode="horizontal">
-            <el-menu-item>
-                <a href="http://localhost/oblog">
-                    <img style="width:120px;margin-top:-5px"
-                        src="https://demo.ouorz.com/build/static/eugrade_logo_with_text@3x.png">
-                </a>
-            </el-menu-item>
-            <el-menu-item v-for="item in nav_items">
-                <a :href="item.url">{{ item.name }}</a>
-            </el-menu-item>
-            <el-menu-item style="float:right">
-                <a href="https://www.ouorz.com">
-                    <el-button type="primary" style="margin-top: -5px;">About Me</el-button>
-                </a>
-            </el-menu-item>
-        </el-menu>
+    <div id="view" style="opacity:0;">
+
+
+        <div class="navbar-fixed-top new-header-div" id="header">
+            <div id="new-header" class="container new-header">
+                <h3>TonyHe</h3>
+                <p>
+                    <a v-for="item in nav_items" v-html="item.name" :href="item.url">Home</a>
+                </p>
+            </div>
+        </div>
+
+
+
+
+        <script>
+            $(window).scroll(function() {
+                var to_top_header = $(document).scrollTop();
+                if (to_top_header <= 0) {
+                    $('#header').attr('class', 'navbar-fixed-top new-header-div');
+                } else {
+                    $('#header').attr('class', 'navbar-fixed-top new-header-div-scoll');
+                }
+            });
+        </script>
