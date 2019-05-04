@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="md.css">
 <div class="reading-bar"></div>
 <el-collapse-transition>
-    <div class="blog-container" v-show="loading">
+    <div class="blog-container" v-show="loading" style="width:67%">
 
         <el-row :gutter="20">
             <el-col :span="6">
@@ -49,7 +49,7 @@
 
 
             </el-col>
-            <el-col :span="16">
+            <el-col :span="18">
 
 
                 <el-card shadow="hover" style="
