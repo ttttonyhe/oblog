@@ -142,8 +142,8 @@ if (!empty($get_method)) {
                 /* 获取文章详情结束 */
 
                 if ($status) { //匹配请求条件的文章
+                    $data['posts'][$i]['filename'] = explode('.', $name)[0];
                     for ($k = 0; $k < 6; $k++) { //获取当前文章信息
-                        $data['posts'][$i]['filename'] = explode('.', $name)[0];
                         $temp_data_array = explode(':', $file_arr[$k]);
                         $data['posts'][$i]['info'][$fy->infofy($temp_data_array[0])] = $fy->infofy($temp_data_array[1]);
                     }

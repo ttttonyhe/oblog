@@ -2,10 +2,7 @@
 <link rel="stylesheet" href="md.css">
 <div class="reading-bar"></div>
 <el-collapse-transition>
-    <div style="
-              width: 70%;
-              margin: 10vh auto;
-          " v-show="loading">
+    <div class="blog-container" v-show="loading">
 
         <el-row :gutter="20">
             <el-col :span="6">

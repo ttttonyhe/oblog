@@ -1,10 +1,7 @@
 <?php require 'header.php'; ?>
 
 <el-collapse-transition>
-    <div style="
-              width: 75%;
-              margin: 10vh auto;
-          " v-show="loaded">
+    <div class="blog-container" v-show="loaded">
         <el-row :gutter="20">
 
 
@@ -16,7 +13,7 @@
                             <div class="side-author-info">
                                 <h2>TonyHe</h2>
                                 <p>Just A Poor Lifesinger</p>
-                                <em>已发布 {{ site_info.posts_count }} 篇内容</em>
+                                <em>已发布 {{ site_info.total_posts_count }} 篇内容</em>
                             </div>
                         </div>
                     </el-card>
@@ -45,6 +42,19 @@
 
             <el-col :span="12">
                 <div>
+                    <el-card shadow="hover" class="first-stream-card">
+                        <h3>共包含 {{ site_info.posts_count }} 篇内容</h3>
+                        <el-dropdown @command="handleDisplay">
+                            <el-button>
+                                加载方式<i class="el-icon-arrow-down el-icon--right"></i>
+                            </el-button>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item command="3">按需加载</el-dropdown-item>
+                                <el-dropdown-item command="2">全部加载</el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
+                    </el-card>
+
                     <el-card shadow="hover" v-for="(post,index) in posts" v-if="index <= display_count" class="stream-card">
                         <img :src="post.info.Img" v-if="!!post.info.Img">
                         <p class="stream-info">
@@ -74,71 +84,90 @@
         <?php require 'footer.php'; ?>
     </div>
     <el-collapse-transition>
-<script>
-    var md = window.markdownit({
-        html: true,
-        xhtmlOut: false,
-        breaks: true,
-        linkify: true
-    });
+        <script>
+            var md = window.markdownit({
+                html: true,
+                xhtmlOut: false,
+                breaks: true,
+                linkify: true
+            });
 
-$(document).ready(function(){
-    $('#view').css('opacity','1');
+            $(document).ready(function() {
+                $('#view').css('opacity', '1');
 
-    new Vue({
-        el: '#view',
-        data() {
-            return {
-                loading: 1,
-                loaded:0,
-                posts: [],
-                nav_items: [],
-                site_info: {
-                    'posts_count': 0,
-                    'cates_count': 0,
-                    'tags_count' : 0
-                },
-                display_count: 3,
-                tags: [],
-                cates: []
-            }
-        },
-        mounted() {
-            axios.get('get_header.php')
-                .then(e => {
-                    this.nav_items = e.data;
+                new Vue({
+                    el: '#view',
+                    data() {
+                        return {
+                            loading: 1,
+                            loaded: 0,
+                            posts: [],
+                            nav_items: [],
+                            site_info: {
+                                'posts_count': 0,
+                                'cates_count': 0,
+                                'tags_count': 0,
+                                'total_posts_count': 0
+                            },
+                            display_count: 3,
+                            tags: [],
+                            cates: []
+                        }
+                    },
+                    mounted() {
+                        axios.get('get_header.php')
+                            .then(e => {
+                                this.nav_items = e.data;
+                            })
+                            .then(() => {
+                                axios.get('get_posts.php?pos=1&exclude_type=cate&exclude_value=伙伴链接')
+                                    .then(e => {
+                                        this.posts = e.data.posts;
+                                        this.site_info.posts_count = e.data.counts.posts_count;
+                                        this.site_info.total_posts_count = e.data.counts.total_posts_count;
+                                        axios.get('get_info.php?key=tags')
+                                            .then(e => {
+                                                this.tags = e.data;
+                                                this.site_info.tags_count = e.data.counts.key_count;
+                                                axios.get('get_info.php?key=cate')
+                                                    .then(e => {
+                                                        this.cates = e.data;
+                                                        this.site_info.cates_count = e.data.counts.key_count;
+                                                        this.loaded = 1;
+                                                    })
+                                            })
+                                    })
+                            })
+                    },
+                    methods: {
+                        new_page: function() { //加载下一页文章列表
+                            this.display_count += 6;
+                            if (this.display_count >= this.site_info.posts_count) {
+                                this.loading = 0;
+                            }
+                        },
+                        handleDisplay(command) {
+                            if (command == 2) {
+                                this.display_count = this.site_info.posts_count + 1;
+                                this.loading = 0;
+                                this.$message({
+                                    message: '已加载全部文章',
+                                    type: 'success'
+                                });
+                            } else {
+                                this.display_count = 3;
+                                this.loading = 1;
+                                this.$message({
+                                    message: '只加载部分文章',
+                                    type: 'success'
+                                });
+                            }
+                        }
+                    }
                 })
-                .then(() => {
-                    axios.get('get_posts.php?pos=1')
-                        .then(e => {
-                            this.posts = e.data.posts;
-                            this.site_info.posts_count = e.data.counts.posts_count;
-                            axios.get('get_info.php?key=tags')
-                                .then(e => {
-                                    this.tags = e.data;
-                                    this.site_info.tags_count = e.data.counts.key_count;
-                                    axios.get('get_info.php?key=cate')
-                                        .then(e => {
-                                            this.cates = e.data;
-                                            this.site_info.cates_count = e.data.counts.key_count;
-                                            this.loaded = 1;
-                                        })
-                                })
-                        })
-                })
-        },
-        methods : {
-            new_page : function(){ //加载下一页文章列表
-                this.display_count += 6;
-                if(this.display_count >= this.site_info.posts_count){
-                    this.loading = 0;
-                }
-            },
-        }
-    })
 
-});
-</script>
-</body>
+            });
+        </script>
+        </body>
 
-</html>
+        </html>

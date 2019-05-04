@@ -144,10 +144,15 @@ a {
 }
 
 .new-header-div{
+    border-bottom: 1px solid #eee;
+    height: 55px;
+    transition: all .3s;
     position: fixed;
-    top:0;
     width: 100%;
-    opacity: 0;
+    top: 0px;
+    z-index: 9;
+    background: #fff;
+    padding-top: 5px
 }
 
 @media screen and (max-width:767px) {
@@ -157,6 +162,7 @@ a {
 }
 
 .new-header-div-scoll {
+    border-bottom: 1px solid #eee;
     box-shadow: #fff 0 -15px, rgba(0, 0, 0, 0.1) 0 0 15px;
     height: 50px;
     transition: all .3s;
@@ -165,7 +171,6 @@ a {
     top: 0px;
     z-index: 9;
     background: #fff;
-    opacity : 1;
 }
 
 .new-header{
@@ -186,9 +191,14 @@ a {
     margin-top: 12px;
 }
 
+.new-header p a:nth-child(1){
+    border: none;
+}
 .new-header p a{
-    margin-left: 10px;
     color:#777;
+    border-left: 1px solid #eee;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 .side-contact-w{
@@ -306,4 +316,65 @@ a {
     top: 0px;
     left: 0px;
     z-index: 999;
+}
+
+.blog-container{
+    width: 75%;
+    margin: 13vh auto;
+}
+
+.header-btn{
+    padding: 10px 15px;
+    margin-top: 4px;
+}
+
+.header-dropdown{
+    position: absolute;
+    right: 12.5%;
+}
+
+.baijia-plan p{
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    transition: all .2s;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.baijia-plan p:nth-child(1){
+    margin-top: 0px;
+}
+
+.baijia-plan p:hover{
+    transform:translateX(5px);
+}
+
+.first-stream-card{
+    margin-bottom: 10px;
+    padding: 1px 20px;
+}
+
+.first-stream-card .el-card__body{
+    padding: 0px;
+}
+
+.first-stream-card h3{
+    float: left;
+    font-size: 1.2rem;
+    margin-top: 12px;
+    color: #666;
+    font-weight: 500;
+    letter-spacing: .3px;
+}
+
+.first-stream-card .el-dropdown{
+    float: right;
+}
+
+.first-stream-card button{
+    padding: 7px 10px;
+    margin-top: 8.5px;
 }

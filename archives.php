@@ -1,8 +1,5 @@
 <?php require 'header.php'; ?>
-    <div style="
-              width: 75%;
-              margin: 10vh auto;
-          " v-show="loaded">
+    <div class="blog-container" v-show="loaded">
         <el-row :gutter="20">
 
 
