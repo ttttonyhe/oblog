@@ -147,6 +147,7 @@ if (!empty($get_method)) {
                         $temp_data_array = explode(':', $file_arr[$k]);
                         $data['posts'][$i]['info'][$fy->infofy($temp_data_array[0])] = $fy->infofy($temp_data_array[1]);
                     }
+                    $data['posts'][$i]['info']['Date'] = date('Y/m/d H:s',filectime($file_path));
                     /* 获取文章内容 */
                     $temp_data_content = '';
                     for ($j = 6; $j < count($file_arr); $j++) {

@@ -63,6 +63,7 @@ if (empty($_GET['view'])) {
                     $temp_data_array = explode(':', $file_arr[$k]);
                     $data['posts'][$i]['info'][$fy->infofy($temp_data_array[0])] = $fy->infofy($temp_data_array[1]);
                 }
+                $data['posts'][$i]['info']['Date'] = date('Y/m/d H:s',filectime($file_path));
                 /* 获取文章详情结束 */
 
                 /* 获取文章内容 */
@@ -93,6 +94,7 @@ if (empty($_GET['view'])) {
             $temp_data_array = explode(':', $file_arr[$k]);
             $data['info'][$fy->infofy($temp_data_array[0])] = $fy->infofy($temp_data_array[1]);
         }
+        $data['info']['Date'] = date('Y/m/d H:s',filectime($file_path));
         /* 获取文章详情结束 */
 
         /* 获取文章内容 */
