@@ -53,7 +53,7 @@ if (!empty($get_method)) {
 
 
                 /* 获取文章详情 */
-                for ($o = 0; $o < 6; $o++) { //循环获取文章字段
+                for ($o = 0; $o < 5; $o++) { //循环获取文章字段
                     if ((explode(':', $file_arr[$o]))[0] == 'Author') {
                         $current_author = explode(':', $file_arr[$o])[1];
                     }
@@ -143,14 +143,14 @@ if (!empty($get_method)) {
 
                 if ($status) { //匹配请求条件的文章
                     $data['posts'][$i]['filename'] = explode('.', $name)[0];
-                    for ($k = 0; $k < 6; $k++) { //获取当前文章信息
+                    for ($k = 0; $k < 5; $k++) { //获取当前文章信息
                         $temp_data_array = explode(':', $file_arr[$k]);
                         $data['posts'][$i]['info'][$fy->infofy($temp_data_array[0])] = $fy->infofy($temp_data_array[1]);
                     }
                     $data['posts'][$i]['info']['Date'] = date('Y/m/d H:s',filectime($file_path));
                     /* 获取文章内容 */
                     $temp_data_content = '';
-                    for ($j = 6; $j < count($file_arr); $j++) {
+                    for ($j = 5; $j < count($file_arr); $j++) {
                         $temp_data_content .= $fy->contentfy($file_arr[$j]);
                     }
                     if(!empty($_GET['pos']) && $_GET['pos'] == 1){

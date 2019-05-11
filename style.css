@@ -67,6 +67,31 @@ a {
     margin-bottom: 20px
 }
 
+.stream-card-archive{
+    padding: 15px 20px 10px 20px;
+    margin-bottom: 20px;
+}
+
+.stream-card-archive .archive-post-div{
+    display: flex;
+}
+
+.stream-card-archive a{
+    text-decoration: none;
+    color:#333
+}
+
+.stream-card-archive h1{
+    margin-bottom: 10px
+}
+
+.stream-card-archive p{
+    margin: 0px;
+    font-size: 1.2rem;
+    color:#999;
+    letter-spacing: .2px
+}
+
 .stream-card img{
     width:100%;
     border-radius: 4px;
@@ -216,6 +241,24 @@ a {
 .side-contact-e{
     text-align: center;
     color: #f56c6c;
+    font-size: 1.2rem;
+}
+
+.side-contact-g{
+    text-align: center;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.side-contact-we{
+    text-align: center;
+    color: #e6172e;
+    font-size: 1.2rem;
+}
+
+.side-contact-z{
+    text-align: center;
+    color: #2c93fe;
     font-size: 1.2rem;
 }
 
@@ -377,4 +420,185 @@ a {
 .first-stream-card button{
     padding: 7px 10px;
     margin-top: 8.5px;
+}
+
+.archive-banner{
+    width: 100%;height: 22vh;
+    background: rgb(248, 249, 250);
+    text-align: center;
+    padding-top: 11vh;
+}
+
+.archive-banner h2{
+    font-size: 2.3rem;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+.archive-banner-badge{
+    margin: 0px;
+    font-size: 1.2rem;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.archive-banner-count{
+    color: #666;
+    font-weight: 600;
+    border: 1px solid #777;
+    padding: 4px 15px;
+    font-style: normal;
+    border-radius: 4px;
+    letter-spacing: .5px;
+}
+
+.archive-post-div .archive-img{
+    width: 31%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 4%;
+    border-radius: 4px;
+}
+
+.comments-list ul{
+    list-style-type: none;
+    padding: 0px;
+}
+
+.comments-list ul li{
+    display: flex;
+    border-bottom: 1px solid #eee;
+    padding: 5px 20px 15px 20px;
+    transition: all .2s;
+}
+
+.comments-list ul li:hover{
+    background: #f7f8f9;
+}
+
+.comments-list ul li img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid #eee;
+}
+
+.comments-info{
+    margin-left: 15px;
+}
+
+.comments-info .p1{
+    font-size: 1.5rem;
+    margin: 0px;
+    text-transform: capitalize !important;
+}
+
+.comments-info em{
+    font-size: 1rem;
+    color: #999;
+    font-style: normal;
+}
+
+.comments-info .p2{
+    margin-top: 2px;
+    letter-spacing: .5px;
+    color: #444;
+    margin-bottom: 0px;
+}
+
+.comments-send{
+    margin: 0px 0px 10px;
+    font-size: 1.2rem;
+    outline: none;
+}
+
+.comments-send .el-textarea__inner{
+    padding: 10px 15px;
+}
+
+.comments-reply{
+    padding-left: 20px;
+}
+
+.comments-reply-div{
+    border-left: 2px dashed #eee;
+    padding-left: 20px !important;
+}
+
+.comments-email{
+    color: #606266;
+    border: 1px solid #DCDFE6;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.comments-name{
+    color: #606266;
+    border: 1px solid #DCDFE6;
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.comments-btn{
+    padding: 9px 30px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    float: right;
+    letter-spacing: .5px;
+    outline: none;
+}
+
+.comments-reply-badge{
+    font-style: normal;
+    font-size: 1rem;
+    color: #888;
+    border: 1px solid #999;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.comments-reply-badge button{
+    background: #555;
+    color: #fff !important;
+    padding: 1px 5px;
+    font-style: normal;
+    border-radius: 4px;
+    margin-left: 5px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.index-div-scroll{
+    position: fixed !important;
+    top: 100px !important;
+    width: 240px !important;
+    transform: translateX(30px) !important;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 20px 0px;
+}
+
+.index-div-scroll .el-card__body{
+    padding: 0px
+}
+
+.side-h2{
+    border-left: 2px solid #333;
+    padding-left: 10px;
+    color:#333;
+    margin: 20px 0px
 }

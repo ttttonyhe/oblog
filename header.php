@@ -34,10 +34,11 @@
                 </p>
                 <el-dropdown class="header-dropdown">
                     <el-button type="primary" class="header-btn">
-                        电邮博主<i class="el-icon-arrow-down el-icon--right"></i>
+                        Buy me a coffee<i class="el-icon-arrow-down el-icon--right"></i>
                     </el-button>
                     <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item>he@holptech.com</el-dropdown-item>
+                        <el-dropdown-item><i class="czs-alipay"></i> 13408697095</el-dropdown-item>
+                        <el-dropdown-item><i class="czs-weixinzhifu"></i> Helipeng_tony</el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
             </div>

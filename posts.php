@@ -1,11 +1,12 @@
 <?php require 'header.php' ?>
 <link rel="stylesheet" href="md.css">
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
 <div class="reading-bar"></div>
 <el-collapse-transition>
     <div class="blog-container" v-show="loading" style="width:67%">
 
         <el-row :gutter="20">
-            <el-col :span="6">
+            <el-col :span="7">
 
 
                 <div class="side-blog-author">
@@ -49,10 +50,10 @@
 
 
             </el-col>
-            <el-col :span="18">
+            <el-col :span="17">
 
 
-                <el-card shadow="hover" style="
+                <el-card shadow="never" style="
                 padding: 20px 40px;
                 margin-bottom:20px
             ">
@@ -64,6 +65,55 @@
                         <em style="margin-right:5px" v-for="tag in tags.split(',')">{{ tag }}</em>
                     </p>
                     <div v-html="content" class="post-content markdown-body" id="content"></div>
+                    <div>
+                        <div class="comments-list">
+                            <ul v-for="(com,index) in comments">
+                                <li @click="reply(index + 1)">
+                                    <div>
+                                        <img :src="'https://gravatar.loli.net/avatar/'+md5(com.email)+'?d=mp&s=80'">
+                                    </div>
+                                    <div class="comments-info">
+                                        <p class="p1">
+                                            <b>{{ com.name }}</b>
+                                            <em>{{ time(com.date) }}</em>
+                                        </p>
+                                        <p class="p2">
+                                            {{ com.content }}
+                                        </p>
+                                    </div>
+                                </li>
+                                <div class="comments-reply" v-if="!!com.reply">
+                                    <li v-for="rcom in com.reply" class="comments-reply-div">
+                                        <div>
+                                            <img :src="'https://gravatar.loli.net/avatar/'+md5(rcom.email)+'?d=mp&s=80'">
+                                        </div>
+                                        <div class="comments-info">
+                                            <p class="p1">
+                                                <b>{{ rcom.name }}</b>
+                                                <em>{{ time(rcom.date) }}</em>
+                                            </p>
+                                            <p class="p2">
+                                                {{ rcom.content }}
+                                            </p>
+                                        </div>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div>
+                        <div style="margin-top: 40px;margin-bottom:30px">
+                            <div v-if="!!comment.comment_reply">
+                                <p class="comments-reply-badge">正在对第 {{ comment.comment_reply }} 条评论进行回复 <button @click="reply('c')">取消 X</button></p>
+                            </div>
+                            <el-input type="textarea" placeholder="说点啥吧..." v-model.trim="comment.comment_content" class="comments-send" row="4">
+                            </el-input>
+                            <div style="display: flex;width: 60%;">
+                                <el-input placeholder="你的昵称" v-model.trim="comment.comment_name"></el-input>
+                                <el-input placeholder="你的邮箱" v-model.trim="comment.comment_email" style="margin-left:20px"></el-input>
+                            </div>
+                            <el-button type="primary" @click="send_comment('default')" style="float: right;
+    margin-top: -40px;">提交评论</el-button>
+                        </div>
+                    </div>
                 </el-card>
 
 
@@ -75,6 +125,13 @@
     </div>
 </el-collapse-transition>
 <script>
+
+    function time(time) {
+        var newDate = new Date();
+        newDate.setTime(time * 1000);
+        return newDate.toLocaleString();
+    }
+
     var md = window.markdownit({
         html: true,
         xhtmlOut: false,
@@ -97,7 +154,14 @@
                     date: null,
                     img: null,
                     tags: '',
-                    content: ' '
+                    content: ' ',
+                    comments: null,
+                    comment: {
+                        comment_content: null,
+                        comment_name: null,
+                        comment_email: null,
+                        comment_reply: null
+                    }
                 }
             },
             mounted() {
@@ -117,6 +181,10 @@
                         this.content = md.render(this.post.content);
                         this.loading = 1;
 
+                        axios.get('comments/<?php echo $_GET['view'] ?>.json')
+                            .then(e => {
+                                this.comments = e.data;
+                            })
 
 
                         $('#content').ready(function() {
@@ -217,9 +285,80 @@
                         })
 
 
-
+                        var navH = 600;
+        $(window).scroll(function(){
+            var scroH = $(this).scrollTop();
+            if(scroH >= navH){
+                $('.index-div').attr('class','index-div-scroll');
+                $('.index-div-scroll').css('opacity','1');
+            }else{
+                $('.index-div-scroll').css('opacity','0');
+            }
+        });
 
                     })
+            },
+            methods: {
+                send_comment: function(key) {
+                    if (!this.comment.comment_name || !this.comment.comment_email || !this.comment.comment_content) {
+                        this.$message({
+                            showClose: true,
+                            message: '信息不全',
+                            type: 'error'
+                        });
+                    } else {
+                        if (!this.comment.comment_reply) {
+                            var params = new URLSearchParams();
+                            params.append('name', this.comment.comment_name);
+                            params.append('email', this.comment.comment_email);
+                            params.append('content', this.comment.comment_content);
+                            params.append('pid', <?php echo $_GET['view'] ?>);
+                            params.append('ver', 'comment_ver');
+                            axios.post('save_comments.php', params)
+                                .then(response => {
+                                    this.comment.comment_content = null;
+                                    this.$message({
+                                        showClose: true,
+                                        message: '提交成功',
+                                        type: 'success'
+                                    });
+                                    axios.get('comments/<?php echo $_GET['view'] ?>.json')
+                                        .then(e => {
+                                            this.comments = e.data;
+                                        })
+
+                                });
+                        } else {
+                            var params = new URLSearchParams();
+                            params.append('name', this.comment.comment_name);
+                            params.append('email', this.comment.comment_email);
+                            params.append('content', this.comment.comment_content);
+                            params.append('pid', <?php echo $_GET['view'] ?>);
+                            params.append('ver', 'comment_ver');
+                            params.append('reply', this.comment.comment_reply - 1);
+                            axios.post('save_comments.php', params)
+                                .then(response => {
+                                    this.comment.comment_content = null;
+                                    this.$message({
+                                        showClose: true,
+                                        message: '提交成功',
+                                        type: 'success'
+                                    });
+                                    axios.get('comments/<?php echo $_GET['view'] ?>.json')
+                                        .then(e => {
+                                            this.comments = e.data;
+                                        })
+                                })
+                        }
+                    }
+                },
+                reply: function(key) {
+                    if (key !== 'c') {
+                        this.comment.comment_reply = key;
+                    } else {
+                        this.comment.comment_reply = null;
+                    }
+                }
             }
         })
     })

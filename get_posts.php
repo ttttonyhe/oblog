@@ -38,7 +38,7 @@ if (empty($_GET['view'])) {
 
             if (!empty($_GET['exclude_type']) && !empty($_GET['exclude_value'])) { //存在排除判断
                 /* 判断文章详情 */
-                for ($k = 0; $k < 6; $k++) { //循环获取到要排除的 key
+                for ($k = 0; $k < 5; $k++) { //循环获取到要排除的 key
                     $temp_data_array = explode(':', $file_arr[$k]);
                     if ($fy->infofy($temp_data_array[0]) == ucfirst($_GET['exclude_type'])) { //获取到要排除的 key
                         if($_GET['exclude_type'] == 'tags'){ //若为 tags
@@ -59,7 +59,7 @@ if (empty($_GET['view'])) {
                 ++$count;
                 /* 获取文章详情 */
                 $data['posts'][$i]['filename'] = explode('.', $name)[0]; //获取文件名
-                for ($k = 0; $k < 6; $k++) {
+                for ($k = 0; $k < 5; $k++) {
                     $temp_data_array = explode(':', $file_arr[$k]);
                     $data['posts'][$i]['info'][$fy->infofy($temp_data_array[0])] = $fy->infofy($temp_data_array[1]);
                 }
@@ -68,7 +68,7 @@ if (empty($_GET['view'])) {
 
                 /* 获取文章内容 */
                 $temp_data_content = '';
-                for ($j = 6; $j < count($file_arr); $j++) {
+                for ($j = 5; $j < count($file_arr); $j++) {
                     $temp_data_content .= $fy->contentfy($file_arr[$j]);
                 }
                 if (!empty($_GET['pos']) && $_GET['pos'] == 1) {
@@ -90,7 +90,7 @@ if (empty($_GET['view'])) {
         $file_arr = file($file_path);
 
         /* 获取文章详情 */
-        for ($k = 0; $k < 6; $k++) {
+        for ($k = 0; $k < 5; $k++) {
             $temp_data_array = explode(':', $file_arr[$k]);
             $data['info'][$fy->infofy($temp_data_array[0])] = $fy->infofy($temp_data_array[1]);
         }
@@ -99,7 +99,7 @@ if (empty($_GET['view'])) {
 
         /* 获取文章内容 */
         $temp_data_content = '';
-        for ($j = 6; $j < count($file_arr); $j++) {
+        for ($j = 5; $j < count($file_arr); $j++) {
             $temp_data_content .= $fy->contentfy($file_arr[$j]);
         }
         $data['content'] = $temp_data_content;

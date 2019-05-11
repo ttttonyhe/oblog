@@ -32,13 +32,13 @@ foreach ($filesnames as $name) {
             $file_arr = file($file_path);
 
             if($key !== 'tags'){ //若不为 tags
-                for ($k = 0; $k < 6; $k++) {
+                for ($k = 0; $k < 5; $k++) {
                     if((explode(':',$file_arr[$k]))[0] == ucfirst($key)){ //获取到字段
                         $data[$key][] = $fy->infofy((explode(':',$file_arr[$k]))[1]); //添加入数组
                     }
                 }
             }else{ //若为 tags
-                for ($k = 0; $k < 6; $k++) {
+                for ($k = 0; $k < 5; $k++) {
                     if((explode(':',$file_arr[$k]))[0] == 'Tags'){ //获取到字段
                         $temp_array = explode(',',(explode(':',$file_arr[$k]))[1]); //分隔字符串
                         for($i=0;$i<count($temp_array);++$i){ //添加到数组

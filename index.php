@@ -35,6 +35,24 @@
                             36624065
                         </p>
                     </el-card>
+                    <el-card shadow="hover" style="margin-top: 10px;">
+                        <p class="side-contact-g">
+                            <i class="czs-github-logo"></i>
+                            HelipengTony
+                        </p>
+                    </el-card>
+                    <el-card shadow="hover" style="margin-top: 10px;">
+                        <p class="side-contact-we">
+                            <i class="czs-weibo"></i>
+                             小半阅读
+                        </p>
+                    </el-card>
+                    <el-card shadow="hover" style="margin-top: 10px;">
+                        <p class="side-contact-z">
+                            <i class="czs-zhihu"></i>
+                            helipengtony
+                        </p>
+                    </el-card>
                 </div>
             </el-col>
 
