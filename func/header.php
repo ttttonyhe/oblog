@@ -1,4 +1,6 @@
-<?php require 'settings.php'; ?>
+<?php 
+    //获取设置的选项内容
+    require 'settings.php'; ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
 

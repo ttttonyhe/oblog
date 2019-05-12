@@ -1,9 +1,10 @@
 html {
-    -ms-overflow-style:none; 
-    overflow:-moz-scrollbars-none; 
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
 }
-html::-webkit-scrollbar{
-    width:0px
+
+html::-webkit-scrollbar {
+    width: 0px
 }
 
 body {
@@ -67,33 +68,33 @@ a {
     margin-bottom: 20px
 }
 
-.stream-card-archive{
+.stream-card-archive {
     padding: 15px 20px 10px 20px;
     margin-bottom: 20px;
 }
 
-.stream-card-archive .archive-post-div{
+.stream-card-archive .archive-post-div {
     display: flex;
 }
 
-.stream-card-archive a{
+.stream-card-archive a {
     text-decoration: none;
-    color:#333
+    color: #333
 }
 
-.stream-card-archive h1{
+.stream-card-archive h1 {
     margin-bottom: 10px
 }
 
-.stream-card-archive p{
+.stream-card-archive p {
     margin: 0px;
     font-size: 1.2rem;
-    color:#999;
+    color: #999;
     letter-spacing: .2px
 }
 
-.stream-card img{
-    width:100%;
+.stream-card img {
+    width: 100%;
     border-radius: 4px;
     margin-bottom: 5px
 }
@@ -168,7 +169,7 @@ a {
     box-shadow: rgba(26, 26, 26, 0.1) 0px 1px 3px !important;
 }
 
-.new-header-div{
+.new-header-div {
     border-bottom: 1px solid #eee;
     height: 55px;
     transition: all .3s;
@@ -198,8 +199,10 @@ a {
     background: #fff;
 }
 
-.new-header{
-    display: flex; width: 75%; margin: 3px auto 0px auto;
+.new-header {
+    display: flex;
+    width: 75%;
+    margin: 3px auto 0px auto;
 }
 
 .new-header h3 {
@@ -216,58 +219,59 @@ a {
     margin-top: 12px;
 }
 
-.new-header p a:nth-child(1){
+.new-header p a:nth-child(1) {
     border: none;
 }
-.new-header p a{
-    color:#777;
+
+.new-header p a {
+    color: #777;
     border-left: 1px solid #eee;
     padding-right: 15px;
     padding-left: 15px;
 }
 
-.side-contact-w{
+.side-contact-w {
     text-align: center;
     color: #68c23c;
     font-size: 1.2rem;
 }
 
-.side-contact-q{
+.side-contact-q {
     text-align: center;
     color: #409EFF;
     font-size: 1.2rem;
 }
 
-.side-contact-e{
+.side-contact-e {
     text-align: center;
     color: #f56c6c;
     font-size: 1.2rem;
 }
 
-.side-contact-g{
+.side-contact-g {
     text-align: center;
     color: #333;
     font-size: 1.2rem;
 }
 
-.side-contact-we{
+.side-contact-we {
     text-align: center;
     color: #e6172e;
     font-size: 1.2rem;
 }
 
-.side-contact-z{
+.side-contact-z {
     text-align: center;
     color: #2c93fe;
     font-size: 1.2rem;
 }
 
-.post-h1{
+.post-h1 {
     margin-bottom: 15px;
     font-size: 2.6rem;
 }
 
-.post-p em{
+.post-p em {
     font-size: 1.2rem;
     font-style: normal;
     font-weight: 500;
@@ -277,33 +281,33 @@ a {
     color: #777;
 }
 
-.post-p{
+.post-p {
     margin: 0px;
     margin-top: 10px;
 }
 
-.post-content{
+.post-content {
     font-size: 16px;
     line-height: 1.7 !important;
-    margin-top:30px;
+    margin-top: 30px;
     color: #4a4a4a;
     font-weight: 400;
     letter-spacing: .2px;
     padding-bottom: 40px
 }
 
-.post-content p{
+.post-content p {
     color: #4a4a4a;
 }
 
-.post-content img{
+.post-content img {
     max-width: 100%;
     margin: 15px 0px;
     border-radius: 4px;
     height: auto
 }
 
-.index-ul .active{
+.index-ul .active {
     background: #f7f8f9;
     padding: 6px 0px;
     color: #777;
@@ -312,7 +316,7 @@ a {
     padding-right: 10px;
 }
 
-.index-ul li{
+.index-ul li {
     color: #777;
     padding: 6px 0px;
     letter-spacing: .5px;
@@ -324,35 +328,35 @@ a {
     padding-right: 10px;
 }
 
-.index-ul li a{
+.index-ul li a {
     color: inherit;
     text-decoration: none;
     font-size: 1.2rem;
     letter-spacing: .3px
 }
 
-.index-ul li:hover{
+.index-ul li:hover {
     background: #f7f8f9;
 }
 
-.index-ul{
+.index-ul {
     margin: 0px;
     list-style: none;
     padding: 10px 0 0 0;
     text-align: center;
 }
 
-.index-div{
+.index-div {
     border-radius: 6px;
     padding: 20px 0px !important;
     margin-top: 20px
 }
 
-.index-div .el-card__body{
+.index-div .el-card__body {
     padding: 0px !important;
 }
 
-.reading-bar{
+.reading-bar {
     background: rgb(55, 151, 254);
     height: 2px;
     position: fixed;
@@ -361,22 +365,22 @@ a {
     z-index: 999;
 }
 
-.blog-container{
+.blog-container {
     width: 75%;
     margin: 13vh auto;
 }
 
-.header-btn{
+.header-btn {
     padding: 10px 15px;
     margin-top: 4px;
 }
 
-.header-dropdown{
+.header-dropdown {
     position: absolute;
     right: 12.5%;
 }
 
-.baijia-plan p{
+.baijia-plan p {
     font-size: 1.2rem;
     margin-bottom: 5px;
     border-bottom: 1px solid #eee;
@@ -387,24 +391,24 @@ a {
     overflow: hidden;
 }
 
-.baijia-plan p:nth-child(1){
+.baijia-plan p:nth-child(1) {
     margin-top: 0px;
 }
 
-.baijia-plan p:hover{
-    transform:translateX(5px);
+.baijia-plan p:hover {
+    transform: translateX(5px);
 }
 
-.first-stream-card{
+.first-stream-card {
     margin-bottom: 10px;
     padding: 1px 20px;
 }
 
-.first-stream-card .el-card__body{
+.first-stream-card .el-card__body {
     padding: 0px;
 }
 
-.first-stream-card h3{
+.first-stream-card h3 {
     float: left;
     font-size: 1.2rem;
     margin-top: 12px;
@@ -413,36 +417,37 @@ a {
     letter-spacing: .3px;
 }
 
-.first-stream-card .el-dropdown{
+.first-stream-card .el-dropdown {
     float: right;
 }
 
-.first-stream-card button{
+.first-stream-card button {
     padding: 7px 10px;
     margin-top: 8.5px;
 }
 
-.archive-banner{
-    width: 100%;height: 22vh;
+.archive-banner {
+    width: 100%;
+    height: 22vh;
     background: rgb(248, 249, 250);
     text-align: center;
     padding-top: 11vh;
 }
 
-.archive-banner h2{
+.archive-banner h2 {
     font-size: 2.3rem;
     color: #444;
     margin-bottom: 5px;
 }
 
-.archive-banner-badge{
+.archive-banner-badge {
     margin: 0px;
     font-size: 1.2rem;
     color: #999;
     margin-bottom: 20px;
 }
 
-.archive-banner-count{
+.archive-banner-count {
     color: #666;
     font-weight: 600;
     border: 1px solid #777;
@@ -452,7 +457,7 @@ a {
     letter-spacing: .5px;
 }
 
-.archive-post-div .archive-img{
+.archive-post-div .archive-img {
     width: 31%;
     background-position: center;
     background-repeat: no-repeat;
@@ -461,77 +466,77 @@ a {
     border-radius: 4px;
 }
 
-.comments-list ul{
+.comments-list ul {
     list-style-type: none;
     padding: 0px;
     margin: 0px;
 }
 
-.comments-list ul li{
+.comments-list ul li {
     display: flex;
     border-bottom: 1px solid #eee;
     padding: 20px 20px;
     transition: all .2s;
 }
 
-.comments-list ul li:hover{
+.comments-list ul li:hover {
     background: #f7f8f9;
 }
 
-.comments-list ul li img{
+.comments-list ul li img {
     width: 45px;
     height: 45px;
     border-radius: 50%;
     border: 1px solid #eee;
 }
 
-.comments-info{
+.comments-info {
     margin-left: 15px;
 }
 
-.comments-info .p1{
+.comments-info .p1 {
     font-size: 1.5rem;
     margin: 0px;
     text-transform: capitalize !important;
 }
 
-.comments-info em{
+.comments-info em {
     font-size: 1rem;
     color: #999;
     font-style: normal;
 }
 
-.comments-info .p2{
+.comments-info .p2 {
     margin-top: 2px;
     margin-bottom: 0px;
 }
 
-.comments-info .p2 p{
+.comments-info .p2 p {
     letter-spacing: .5px;
     color: #444;
     margin: 0px;
 }
 
-.comments-send{
+.comments-send {
     margin: 0px 0px 10px;
     font-size: 1.2rem;
     outline: none;
 }
 
-.comments-send .el-textarea__inner{
+.comments-send .el-textarea__inner {
     padding: 10px 15px;
 }
 
-.comments-reply{
+.comments-reply {
     padding-left: 20px;
 }
 
-.comments-reply-div{
+.comments-reply-div {
     border-left: 2px dashed #eee;
     padding-left: 20px !important;
 }
 
-.comments-email{
+.comments-email {
     color: #606266;
     border: 1px solid #DCDFE6;
     padding: 10px 15px;
@@ -540,7 +545,7 @@ a {
     outline: none;
 }
 
-.comments-name{
+.comments-name {
     color: #606266;
     border: 1px solid #DCDFE6;
     padding: 10px 15px;
@@ -550,7 +555,7 @@ a {
     outline: none;
 }
 
-.comments-btn{
+.comments-btn {
     padding: 9px 30px;
     background: #333;
     color: #fff;
@@ -562,7 +567,7 @@ a {
     outline: none;
 }
 
-.comments-reply-badge{
+.comments-reply-badge {
     font-style: normal;
     font-size: 1rem;
     color: #888;
@@ -573,7 +578,7 @@ a {
     display: inline-block;
 }
 
-.comments-reply-badge button{
+.comments-reply-badge button {
     background: #555;
     color: #fff !important;
     padding: 1px 5px;
@@ -586,7 +591,7 @@ a {
     font-size: 1rem;
 }
 
-.index-div-scroll{
+.index-div-scroll {
     position: fixed !important;
     top: 100px !important;
     width: 240px !important;
@@ -597,18 +602,18 @@ a {
     padding: 20px 0px;
 }
 
-.index-div-scroll .el-card__body{
+.index-div-scroll .el-card__body {
     padding: 0px
 }
 
-.side-h2{
+.side-h2 {
     border-left: 2px solid #333;
     padding-left: 10px;
-    color:#333;
+    color: #333;
     margin: 20px 0px
 }
 
-.stream-card-archive-friend{
+.stream-card-archive-friend {
     padding: 0px;
     width: 30%;
     display: inline-block;
@@ -616,24 +621,24 @@ a {
     margin-left: 3.33333%
 }
 
-.stream-card-archive-friend:nth-child(3n-2){
+.stream-card-archive-friend:nth-child(3n-2) {
     margin-left: 0px !important;
 }
 
-.archive-f-p{
+.archive-f-p {
     margin-top: 5px;
     color: #999;
     font-size: 1.2rem;
     letter-spacing: .5px;
 }
 
-.archive-f-h1{
+.archive-f-h1 {
     display: inline-block;
     margin: 0px;
     margin-bottom: 10px;
 }
 
-.archive-f-img{
+.archive-f-img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -642,12 +647,12 @@ a {
     margin-bottom: -9px;
 }
 
-.archive-post-div a{
+.archive-post-div a {
     color: #333;
     text-decoration: none;
 }
 
-.comments-md{
+.comments-md {
     float: right;
     color: #999;
     font-style: normal;

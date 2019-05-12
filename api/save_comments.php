@@ -1,5 +1,17 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
+/*
+    提交/回复评论内容
+    请求 key 名为 ver、name、email、content、pid、reply
+    ver 为 comment_ver
+    name 为评论人
+    email 为评论人邮箱
+    content 为评论内容
+    pid 为评论对应文章/页面
+        页面 pid 开头为 page-
+        文章 pid 为文件名
+    reply 为要回复的当前文章对应评论
+*/
 
 class post_back
 {

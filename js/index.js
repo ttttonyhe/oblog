@@ -5,7 +5,7 @@ var md = window.markdownit({
     linkify: true
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('#view').css('opacity', '1');
 
     new Vue({
@@ -33,7 +33,7 @@ $(document).ready(function() {
                     this.nav_items = e.data;
                 })
                 .then(() => {
-                    axios.get('api/get_posts.php?pos=1'+index_get_option)
+                    axios.get('api/get_posts.php?pos=1' + index_get_option)
                         .then(e => {
                             this.posts = e.data.posts;
                             this.site_info.posts_count = e.data.counts.posts_count;
@@ -53,7 +53,7 @@ $(document).ready(function() {
                 })
         },
         methods: {
-            new_page: function() { //加载下一页文章列表
+            new_page: function () { //加载下一页文章列表
                 this.display_count += 6;
                 if (this.display_count >= this.site_info.posts_count) {
                     this.loading = 0;

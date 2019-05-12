@@ -19,13 +19,13 @@
                     </el-card>
                     <?php
                     //联系方式选项
-                    for($i=0;$i<count($site->con);++$i){ ?>
-                    <el-card shadow="hover" style="margin-top: 10px;">
-                        <p class="<?php echo $site->con[$i][0] ?>">
-                            <i class="<?php echo $site->con[$i][1] ?>"></i>
-                            <?php echo $site->con[$i][2] ?>
-                        </p>
-                    </el-card>
+                    for ($i = 0; $i < count($site->con); ++$i) { ?>
+                        <el-card shadow="hover" style="margin-top: 10px;">
+                            <p class="<?php echo $site->con[$i][0] ?>">
+                                <i class="<?php echo $site->con[$i][1] ?>"></i>
+                                <?php echo $site->con[$i][2] ?>
+                            </p>
+                        </el-card>
                     <?php } ?>
                 </div>
             </el-col>
@@ -57,8 +57,8 @@
                     </el-card>
 
                     <el-card shadow="hover" class="stream-card" v-for="(post,index) in posts" v-if="index <= display_count">
-                        
-                    <template v-if="!post.info.Type">
+
+                        <template v-if="!post.info.Type">
                             <img :src="post.info.Img" v-if="!!post.info.Img && post.info.Img !== ':'">
                             <p class="stream-info">
                                 <em>{{ post.info.Author ? post.info.Author : 'Whoever'}}</em>
@@ -105,9 +105,9 @@
 
         <script>
             //首页排除文章选项
-            <?php if(!!$site->index_exclude){ ?>
+            <?php if (!!$site->index_exclude) { ?>
                 var index_get_option = '&exclude_type=<?php echo $site->index_exclude[0] ?>&exclude_value=<?php echo $site->index_exclude[1] ?>';
-            <?php }else{ ?>
+            <?php } else { ?>
                 var index_get_option = '';
             <?php } ?>
         </script>

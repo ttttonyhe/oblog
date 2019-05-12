@@ -64,4 +64,3 @@ class site_info{
 }
 
 $site = new site_info();
-?>
