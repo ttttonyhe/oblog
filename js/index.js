@@ -33,7 +33,7 @@ $(document).ready(function() {
                     this.nav_items = e.data;
                 })
                 .then(() => {
-                    axios.get('api/get_posts.php?pos=1&exclude_type=cate&exclude_value=伙伴链接')
+                    axios.get('api/get_posts.php?pos=1'+index_get_option)
                         .then(e => {
                             this.posts = e.data.posts;
                             this.site_info.posts_count = e.data.counts.posts_count;

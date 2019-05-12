@@ -1,3 +1,4 @@
+<?php require 'settings.php'; ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
 
@@ -5,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>OBlog</title>
+    <title><?php echo $site->name; ?></title>
     <script src="https://static.ouorz.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="https://static.ouorz.com/vue.min.js"></script>
     <script>
@@ -27,18 +28,19 @@
         <div class="navbar-fixed-top new-header-div" id="header">
             <div id="new-header" class="container new-header">
                 <a href="/oblog" style="color:#333">
-                    <h3>TonyHe</h3>
+                    <h3><?php echo $site->name; ?></h3>
                 </a>
                 <p>
-                    <a v-for="item in nav_items" v-html="item.name" :href="item.url">Home</a>
+                    <a v-for="item in nav_items" v-html="item[0]" :href="item[1]"></a>
                 </p>
                 <el-dropdown class="header-dropdown">
                     <el-button type="primary" class="header-btn">
-                        Buy me a coffee<i class="el-icon-arrow-down el-icon--right"></i>
+                        <?php echo $site->header_btn[0] ?><i class="el-icon-arrow-down el-icon--right"></i>
                     </el-button>
                     <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item><i class="czs-alipay"></i> 13408697095</el-dropdown-item>
-                        <el-dropdown-item><i class="czs-weixinzhifu"></i> Helipeng_tony</el-dropdown-item>
+                        <?php for($k=0;$k<count($site->header_btn[1]);$k++){ ?>
+                            <el-dropdown-item><?php echo $site->header_btn[1][$k]; ?></el-dropdown-item>
+                        <?php } ?>
                     </el-dropdown-menu>
                 </el-dropdown>
             </div>

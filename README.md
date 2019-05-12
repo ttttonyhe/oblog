@@ -18,11 +18,11 @@ An Auto Loading &amp; Rendering MarkDown Based Blog System
 + Pages API
 + Pages system
 + Directory Structure optimization
++ Settings mechanism
++ Add support to Markdown for comment system
 <br/>
 
 ## Todo List
-+ Add support to Markdown for comment system
-+ Installing mechanism
 + Documentation
 
 <br/>

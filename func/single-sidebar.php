@@ -1,29 +1,21 @@
 <div class="side-blog-author">
                     <el-card shadow="hover">
-                        <div class="side-author-banner"></div>
-                        <div class="side-author-avatar"><img src="https://static.ouorz.com/tonyhe.jpg">
+                        <div class="side-author-banner" style="background-image:url(<?php echo $site->banner; ?>)"></div>
+                        <div class="side-author-avatar"><img src="<?php echo $site->avatar; ?>">
                             <div class="side-author-info">
-                                <h2>TonyHe</h2>
-                                <p>Just A Poor Lifesinger</p>
+                                <h2><?php echo $site->name; ?></h2>
+                                <p><?php echo $site->des; ?></p>
                             </div>
                         </div>
                     </el-card>
+                    <?php
+                    //联系方式选项
+                    for($i=0;$i<count($site->con);++$i){ ?>
                     <el-card shadow="hover" style="margin-top: 10px;">
-                        <p class="side-contact-w">
-                            <i class="czs-weixin"></i>
-                            Helipeng_tony
+                        <p class="<?php echo $site->con[$i][0] ?>">
+                            <i class="<?php echo $site->con[$i][1] ?>"></i>
+                            <?php echo $site->con[$i][2] ?>
                         </p>
                     </el-card>
-                    <el-card shadow="hover" style="margin-top: 10px;">
-                        <p class="side-contact-e">
-                            <i class="czs-message-l"></i>
-                            he@holptech.com
-                        </p>
-                    </el-card>
-                    <el-card shadow="hover" style="margin-top: 10px;">
-                        <p class="side-contact-q">
-                            <i class="czs-qq"></i>
-                            36624065
-                        </p>
-                    </el-card>
+                    <?php } ?>
                 </div>

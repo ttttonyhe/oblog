@@ -8,51 +8,25 @@
             <el-col :span="6">
                 <div class="side-blog-author">
                     <el-card shadow="hover">
-                        <div class="side-author-banner"></div>
-                        <div class="side-author-avatar"><img src="https://static.ouorz.com/tonyhe.jpg">
+                        <div class="side-author-banner" style="background-image:url(<?php echo $site->banner; ?>)"></div>
+                        <div class="side-author-avatar"><img src="<?php echo $site->avatar; ?>">
                             <div class="side-author-info">
-                                <h2>TonyHe</h2>
-                                <p>Just A Poor Lifesinger</p>
+                                <h2><?php echo $site->name; ?></h2>
+                                <p><?php echo $site->des; ?></p>
                                 <em>已发布 {{ site_info.total_posts_count }} 篇内容</em>
                             </div>
                         </div>
                     </el-card>
+                    <?php
+                    //联系方式选项
+                    for($i=0;$i<count($site->con);++$i){ ?>
                     <el-card shadow="hover" style="margin-top: 10px;">
-                        <p class="side-contact-w">
-                            <i class="czs-weixin"></i>
-                            Helipeng_tony
+                        <p class="<?php echo $site->con[$i][0] ?>">
+                            <i class="<?php echo $site->con[$i][1] ?>"></i>
+                            <?php echo $site->con[$i][2] ?>
                         </p>
                     </el-card>
-                    <el-card shadow="hover" style="margin-top: 10px;">
-                        <p class="side-contact-e">
-                            <i class="czs-message-l"></i>
-                            he@holptech.com
-                        </p>
-                    </el-card>
-                    <el-card shadow="hover" style="margin-top: 10px;">
-                        <p class="side-contact-q">
-                            <i class="czs-qq"></i>
-                            36624065
-                        </p>
-                    </el-card>
-                    <el-card shadow="hover" style="margin-top: 10px;">
-                        <p class="side-contact-g">
-                            <i class="czs-github-logo"></i>
-                            HelipengTony
-                        </p>
-                    </el-card>
-                    <el-card shadow="hover" style="margin-top: 10px;">
-                        <p class="side-contact-we">
-                            <i class="czs-weibo"></i>
-                            小半阅读
-                        </p>
-                    </el-card>
-                    <el-card shadow="hover" style="margin-top: 10px;">
-                        <p class="side-contact-z">
-                            <i class="czs-zhihu"></i>
-                            helipengtony
-                        </p>
-                    </el-card>
+                    <?php } ?>
                 </div>
             </el-col>
 
@@ -128,6 +102,16 @@
         <?php require 'func/footer.php'; ?>
     </div>
     <el-collapse-transition>
+
+        <script>
+            //首页排除文章选项
+            <?php if(!!$site->index_exclude){ ?>
+                var index_get_option = '&exclude_type=<?php echo $site->index_exclude[0] ?>&exclude_value=<?php echo $site->index_exclude[1] ?>';
+            <?php }else{ ?>
+                var index_get_option = '';
+            <?php } ?>
+        </script>
+
         <script src="js/index.js" type="text/javascript"></script>
         </body>
 

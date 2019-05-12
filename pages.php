@@ -47,6 +47,7 @@
 
     </div>
 </el-collapse-transition>
+<?php require 'func/footer.php'; ?>
 <script src="js/pages.js" type="text/javascript"></script>
 </body>
 
