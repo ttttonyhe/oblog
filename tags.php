@@ -5,7 +5,7 @@
     <em class="archive-banner-count">{{ tag_info.posts_count }} 篇内容</em>
 </div>
 <div class="blog-container" v-show="loaded" style="width:60%;margin-top:5vh">
-    <template v-for="(post,index) in posts" v-if="post.info.Cate !== '伙伴链接'">
+    <template v-for="(post,index) in posts" v-if="post.info.Cate !== '<?php echo $site->index_exclude ?>'">
         <el-card shadow="hover" v-if="index <= display_count" class="stream-card-archive">
             <div class="archive-post-div">
                 <div v-if="post.info.Img !== ':'" :style="'background-image: url('+post.info.Img+')'" class="archive-img">

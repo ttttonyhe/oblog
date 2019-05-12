@@ -31,11 +31,9 @@ class site_info{
             'side-contact-z','czs-zhihu','helipengtony'
         )
     );
-    //首页排除选项(单个)
-    //'cate/tag 类型','cate/tag 名称'
-    public $index_exclude = array(
-        'cate','伙伴链接'
-    );
+    //首页排除分类选项(单个)
+    //'cate 名称'
+    public $index_exclude = '伙伴链接';
     //站点导航栏
     //'名称','链接'
     public $header = array(

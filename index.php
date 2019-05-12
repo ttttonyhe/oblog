@@ -106,7 +106,7 @@
         <script>
             //首页排除文章选项
             <?php if (!!$site->index_exclude) { ?>
-                var index_get_option = '&exclude_type=<?php echo $site->index_exclude[0] ?>&exclude_value=<?php echo $site->index_exclude[1] ?>';
+                var index_get_option = '&exclude_type=cate&exclude_value=<?php echo $site->index_exclude ?>';
             <?php } else { ?>
                 var index_get_option = '';
             <?php } ?>

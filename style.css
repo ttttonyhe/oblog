@@ -96,7 +96,8 @@ a {
 .stream-card img {
     width: 100%;
     border-radius: 4px;
-    margin-bottom: 5px
+    margin-bottom: 5px;
+    height: 250px;
 }
 
 .stream-info {
