@@ -36,7 +36,7 @@
                 <div>
                     <el-card shadow="hover" class="first-stream-card">
                         <h3>共包含 {{ site_info.posts_count }} 篇内容</h3>
-                        <el-dropdown @command="handleDisplay">
+                        <el-dropdown @command="handleDisplay" v-if="!wap">
                             <el-button>
                                 加载方式<i class="el-icon-arrow-down el-icon--right"></i>
                             </el-button>

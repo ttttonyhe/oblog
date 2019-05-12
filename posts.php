@@ -27,7 +27,7 @@
                 <el-card shadow="never" style="
                 padding: 20px 40px;
                 margin-bottom:20px
-            ">
+            " class="wap-content">
                     <h1 v-html="title" class="post-h1"></h1>
                     <p class="post-p">
                         <em>{{ author }}</em>

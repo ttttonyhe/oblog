@@ -24,7 +24,8 @@ $(document).ready(function () {
                 },
                 display_count: 3,
                 tags: [],
-                cates: []
+                cates: [],
+                wap:0
             }
         },
         mounted() {
@@ -38,6 +39,11 @@ $(document).ready(function () {
                             this.posts = e.data.posts;
                             this.site_info.posts_count = e.data.counts.posts_count;
                             this.site_info.total_posts_count = e.data.counts.total_posts_count;
+                            if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                                this.display_count = this.site_info.posts_count + 1;
+                                this.loading = 0;
+                                this.wap = 1;
+                            }
                             axios.get('api/get_info.php?key=tags')
                                 .then(e => {
                                     this.tags = e.data;
