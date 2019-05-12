@@ -3,31 +3,74 @@ An Auto Loading &amp; Rendering MarkDown Based Blog System
 
 <br/>
 
-## Accomplished
-+ Home page
-+ Archive/Tags page
-+ Friends link page
-+ Single page
-  - Reading progress bar
-  - Article index
-  - Markdown rendering (Github css)
-+ Json based comment system
-+ Comments (including reply) API
-+ Posts (including parameterized fetch) API
-+ Tags/Cates API
-+ Pages API
-+ Pages system
-+ Directory Structure optimization
-+ Settings mechanism
-+ Add support to Markdown for comment system
-<br/>
-
-## Todo List
-+ Documentation
+## Thumbnail
+### Home Page 首页
+![首页 index](https://static.ouorz.com/QQ20190512-161843@2x.png)
 
 <br/>
 
-## Under consideration
-+ Front-end dashboard
-  - Posts (info) front-end editing
-  - Comments front-end management
+### Single Page 文章页
+![文章页](https://static.ouorz.com/QQ20190512-161858@2x.png)
+
+<br/>
+
+### Archive Page 分类/标签页
+![标签页](https://static.ouorz.com/QQ20190512-162128@2x.png)
+
+<br/>
+
+## Main Features
++ Based on Vue.js & Element UI 
+  - 基于 Vue.js 与 Element UI
++ Markdown auto rendering
+  - Markdown 自动解析 
++ Posts/Pages system
+  - 支持文章/页面系统
++ Neet UI design
+  - 美丽的 UI 设计与自适应
++ 0 sql everywhere
+  - 完全无数据库 (评论系统基于 json)
++ Comments system
+  - 强大的内置评论系统
++ Archive system
+  - 支持分类/标签页
++ Easy to do secondary development
+  - 易于二次开发
+
+<br/>
+
+## Usage 使用方法
++ 安装
+  -  Clone / 下载全部文件并上传服务器
+  -  访问网站前先配置好 settings.php 内部内容
++ 文章发布
+  - 将 .md 类型文件放入根目录 /posts 文件夹中
+  - 文章开头必须包含（注意大写）
+    - 1. Title 文章标题
+    - 2. Cate 文章分类
+    - 3. Tags 文章标签（以英文半角逗号分隔）
+    - 4. Author 文章作者
+    - 5. Img 文章头图（可为空但必须出现）
+  - 5 行后开始使用 Markdown 书写内容
++ 页面发布
+  - 将 .md 类型文件放入根目录 /pages 文件夹中
+  - 页面开头必须包含
+    - 1. Title 页面标题
+    - 1 行后开始使用 Markdown 书写内容
++ 须知
+  - 分类目录/标签支持自动部分/全部获取
+  - 所有内容必须为 Markdown 即 .md 文件
+
+<br/>
+
+## Donation 赞助作者
+Your name will be on the list [Donation](https://www.snapaper.com/donate)
+<br/>
+
+![Donate](https://i.loli.net/2019/02/18/5c6a80afd1e26.png)
+
+<br/>
+
+File an issue if you encountered any problem
+<br/>
+I will reply you as soon as possible
