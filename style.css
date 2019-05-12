@@ -696,4 +696,7 @@ a {
     #header{
         display: none;
     }
+    .stream-card h1{
+        font-size: 2rem;
+    }
 }
