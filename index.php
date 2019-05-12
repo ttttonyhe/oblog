@@ -44,7 +44,7 @@
                     <el-card shadow="hover" style="margin-top: 10px;">
                         <p class="side-contact-we">
                             <i class="czs-weibo"></i>
-                             小半阅读
+                            小半阅读
                         </p>
                     </el-card>
                     <el-card shadow="hover" style="margin-top: 10px;">
@@ -71,22 +71,48 @@
                                 <el-dropdown-item command="2">全部加载</el-dropdown-item>
                             </el-dropdown-menu>
                         </el-dropdown>
+                        <el-dropdown @command="handleDisplay_content" style="margin-right:10px">
+                            <el-button>
+                                加载内容<i class="el-icon-arrow-down el-icon--right"></i>
+                            </el-button>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item command="1">文章内容</el-dropdown-item>
+                                <el-dropdown-item command="2">页面内容</el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
                     </el-card>
 
-                    <el-card shadow="hover" v-for="(post,index) in posts" v-if="index <= display_count" class="stream-card">
-                        <img :src="post.info.Img" v-if="!!post.info.Img && post.info.Img !== ':'">
-                        <p class="stream-info">
-                            <em>{{ post.info.Author ? post.info.Author : 'Whoever'}}</em>
-                            <em>{{ post.info.Date ? post.info.Date : 'Whenever'}}</em>
-                            <em>{{ post.info.Cate ? post.info.Cate : 'Wherever' }}</em>
-                            <em style="color: rgb(136, 142, 148);background: rgb(231, 236, 240);" v-for="tag in post.info.Tags.split(',')">{{ tag }}</em>
-                        </p>
-                        <a :href="'posts.php?view=' + post.filename">
-                            <h1 v-html="post.info.Title"></h1>
-                            <div v-html="md.render(post.content.replace(/\n*/g,'') + '...')" class="stream-content"></div>
-                        </a>
-                        <a :href="'posts.php?view=' + post.filename" class="stream-view">浏览全文</a>
+                    <el-card shadow="hover" class="stream-card" v-for="(post,index) in posts" v-if="index <= display_count">
+                        
+                    <template v-if="!post.info.Type">
+                            <img :src="post.info.Img" v-if="!!post.info.Img && post.info.Img !== ':'">
+                            <p class="stream-info">
+                                <em>{{ post.info.Author ? post.info.Author : 'Whoever'}}</em>
+                                <em>{{ post.info.Date ? post.info.Date : 'Whenever'}}</em>
+                                <em>{{ post.info.Cate ? post.info.Cate : 'Wherever' }}</em>
+                                <em style="color: rgb(136, 142, 148);background: rgb(231, 236, 240);" v-for="tag in post.info.Tags.split(',')">{{ tag }}</em>
+                            </p>
+                        </template>
+
+                        <template v-if="!post.info.Type">
+                            <a :href="'posts.php?view=' + post.filename">
+                                <h1 v-html="post.info.Title"></h1>
+                                <div v-html="md.render(post.content.replace(/\n*/g,'') + '...')" class="stream-content"></div>
+                            </a>
+                            <a :href="'posts.php?view=' + post.filename" class="stream-view">浏览全文</a>
+                        </template>
+
+                        <template v-else>
+                            <a :href="'pages.php?view=' + post.filename">
+                                <h1 v-html="post.info.Title"></h1>
+                                <div v-html="md.render(post.content.replace(/\n*/g,'') + '...')" class="stream-content"></div>
+                            </a>
+                            <a :href="'pages.php?view=' + post.filename" class="stream-view">浏览页面</a>
+                        </template>
+
                     </el-card>
+
+
                     <el-card shadow="hover" class="stream-card" v-loading="loading" v-show="loading">
                     </el-card>
                 </div>
@@ -177,6 +203,32 @@
                                 this.loading = 1;
                                 this.$message({
                                     message: '只加载部分文章',
+                                    type: 'success'
+                                });
+                            }
+                        },
+                        handleDisplay_content(command) {
+                            if (command == 2) {
+                                axios.get('get_pages.php?pos=1')
+                                    .then(c => {
+                                        this.posts = c.data.pages;
+                                        this.site_info.posts_count = this.site_info.total_posts_count = c.data.counts.total_posts_count;
+                                        this.display_count = c.data.counts.total_posts_count + 1;
+                                    })
+                                this.loading = 0;
+                                this.$message({
+                                    message: '已加载页面内容',
+                                    type: 'success'
+                                });
+                            } else {
+                                axios.get('get_posts.php?pos=1&exclude_type=cate&exclude_value=伙伴链接')
+                                    .then(e => {
+                                        this.posts = e.data.posts;
+                                        this.site_info.posts_count = e.data.counts.posts_count;
+                                        this.site_info.total_posts_count = e.data.counts.total_posts_count;
+                                    })
+                                this.$message({
+                                    message: '已加载文章内容',
                                     type: 'success'
                                 });
                             }

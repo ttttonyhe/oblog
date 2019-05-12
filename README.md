@@ -15,10 +15,11 @@ An Auto Loading &amp; Rendering MarkDown Based Blog System
 + Comments (including reply) API
 + Posts (including parameterized fetch) API
 + Tags/Cates API
++ Pages API
++ Pages system
 <br/>
 
 ## Todo List
-+ Pages system
 + Add support to Markdown for comment system
 + Installing mechanism
 + Directory Structure optimization

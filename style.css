@@ -503,9 +503,13 @@ a {
 
 .comments-info .p2{
     margin-top: 2px;
+    margin-bottom: 0px;
+}
+
+.comments-info .p2 p{
     letter-spacing: .5px;
     color: #444;
-    margin-bottom: 0px;
+    margin: 0px;
 }
 
 .comments-send{
@@ -565,7 +569,7 @@ a {
     border: 1px solid #999;
     padding: 5px 10px;
     border-radius: 4px;
-    margin-bottom: 15px;
+    margin-bottom: -15px;
     display: inline-block;
 }
 
@@ -641,4 +645,12 @@ a {
 .archive-post-div a{
     color: #333;
     text-decoration: none;
+}
+
+.comments-md{
+    float: right;
+    color: #999;
+    font-style: normal;
+    margin-bottom: 5px;
+    margin-top: 0px;
 }

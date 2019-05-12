@@ -17,12 +17,22 @@ class post_back
     }
     function valid_post($pid)
     {
-        $host = dirname(__FILE__) . '/posts/'; //要读取的文件夹
-        $file_path = $host . $pid . '.md';
-        if (file_exists($file_path)) {
-            return 1;
-        } else {
-            return 0;
+        if (explode('-', $pid)[0] == 'page') { //页面评论
+            $host = dirname(__FILE__) . '/pages/'; //要读取的文件夹
+            $file_path = $host . explode('-', $pid)[1] . '.md';
+            if (file_exists($file_path)) {
+                return 1;
+            } else {
+                return 0;
+            }
+        } else { //文章评论
+            $host = dirname(__FILE__) . '/posts/'; //要读取的文件夹
+            $file_path = $host . $pid . '.md';
+            if (file_exists($file_path)) {
+                return 1;
+            } else {
+                return 0;
+            }
         }
     }
     function valid_comm_post($pid)
@@ -60,7 +70,7 @@ if (empty($ver) || empty($name) || empty($email) || empty($content) || empty($pi
     echo json_encode($array, JSON_UNESCAPED_UNICODE);
 } else if ($ver == 'comment_ver') {
     /* 结束验证信息 */
-    if ($post->valid_post($pid)) { //判断文章是否存在
+    if ($post->valid_post($pid)) { //判断文章/页面是否存在
         //处理评论内容
         if ($post->valid_comm_post($pid)) {
             $json_string = file_get_contents(dirname(__FILE__) . '/comments/' . $pid . ".json"); // 从文件中读取数据到PHP变量

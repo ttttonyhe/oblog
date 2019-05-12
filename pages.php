@@ -8,11 +8,11 @@
         <el-row :gutter="20">
             <el-col :span="7">
 
-            <?php require 'single-sidebar.php'; ?>
+                <?php require 'single-sidebar.php'; ?>
 
                 <el-card shadow="hover" class="index-div">
                     <div style="padding:0px 25px">
-                        <h2 style="font-weight: 600;margin: 0px;text-align:center">文章引索</h4>
+                        <h2 style="font-weight: 600;margin: 0px;text-align:center">页面引索</h4>
                     </div>
                     <ul id="article-index" class="index-ul">
                     </ul>
@@ -30,10 +30,8 @@
             ">
                     <h1 v-html="title" class="post-h1"></h1>
                     <p class="post-p">
-                        <em>{{ author }}</em>
+                        <em>页面</em>
                         <em>{{ date }}</em>
-                        <em>{{ '归类在: ' + cate }}</em>
-                        <em style="margin-right:5px" v-for="tag in tags.split(',')">{{ tag }}</em>
                     </p>
                     <div v-html="content" class="post-content markdown-body" id="content"></div>
 
@@ -96,11 +94,7 @@
                     post: [],
                     nav_items: [],
                     title: null,
-                    author: null,
-                    cate: null,
                     date: null,
-                    img: null,
-                    tags: '',
                     content: ' ',
                     comments: null,
                     comment: {
@@ -116,19 +110,16 @@
                     .then(e => {
                         this.nav_items = e.data;
                     })
-                axios.get('get_posts.php?view=' + '<?php echo urldecode($_GET['view']); ?>')
+                axios.get('get_pages.php?view=' + '<?php echo urldecode($_GET['view']); ?>')
                     .then(e => {
                         this.post = e.data;
                         this.title = this.post.info.Title;
-                        this.img = this.post.info.Img;
                         this.date = this.post.info.Date;
-                        this.cate = this.post.info.Cate;
-                        this.tags = this.post.info.Tags;
-                        this.author = this.post.info.Author;
                         this.content = md.render(this.post.content);
                         this.loading = 1;
 
-                        axios.get('comments/<?php echo urldecode($_GET['view']) ?>.json')
+                        //获取评论内容列表
+                        axios.get('comments/page-<?php echo urldecode($_GET['view']) ?>.json')
                             .then(e => {
                                 this.comments = e.data;
                             })
@@ -259,7 +250,7 @@
                             params.append('name', this.comment.comment_name);
                             params.append('email', this.comment.comment_email);
                             params.append('content', this.comment.comment_content);
-                            params.append('pid', '<?php echo $_GET['view'] ?>');
+                            params.append('pid', 'page-<?php echo $_GET['view'] ?>');
                             params.append('ver', 'comment_ver');
                             axios.post('save_comments.php', params)
                                 .then(response => {
@@ -269,7 +260,7 @@
                                         message: '提交成功',
                                         type: 'success'
                                     });
-                                    axios.get('comments/<?php echo urldecode($_GET['view']) ?>.json?nocache=' + (new Date()).getTime())
+                                    axios.get('comments/page-<?php echo urldecode($_GET['view']) ?>.json?nocache=' + (new Date()).getTime())
                                         .then(e => {
                                             this.comments = e.data;
                                         })
@@ -281,7 +272,7 @@
                             params.append('name', this.comment.comment_name);
                             params.append('email', this.comment.comment_email);
                             params.append('content', this.comment.comment_content);
-                            params.append('pid', '<?php echo $_GET['view'] ?>');
+                            params.append('pid', 'page-<?php echo $_GET['view'] ?>');
                             params.append('ver', 'comment_ver');
                             params.append('reply', this.comment.comment_reply - 1);
                             axios.post('save_comments.php', params)
@@ -292,7 +283,7 @@
                                         message: '提交成功',
                                         type: 'success'
                                     });
-                                    axios.get('comments/<?php echo urldecode($_GET['view']) ?>.json?nocache=' + (new Date()).getTime())
+                                    axios.get('comments/pages-<?php echo urldecode($_GET['view']) ?>.json?nocache=' + (new Date()).getTime())
                                         .then(e => {
                                             this.comments = e.data;
                                         })
