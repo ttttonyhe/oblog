@@ -5,17 +5,17 @@ An Auto Loading &amp; Rendering MarkDown Based Blog System
 
 ## Thumbnail
 ### Home Page 首页
-![首页 index](https://static.ouorz.com/QQ20190512-161843@2x.png)
+![首页 index](https://static.ouorz.com/QQ20190512-161843@2x%202.png)
 
 <br/>
 
 ### Single Page 文章页
-![文章页](https://static.ouorz.com/QQ20190512-161858@2x.png)
+![文章页](https://static.ouorz.com/QQ20190512-161858@2x%202.png)
 
 <br/>
 
 ### Archive Page 分类/标签页
-![标签页](https://static.ouorz.com/QQ20190512-162128@2x.png)
+![标签页](https://static.ouorz.com/QQ20190512-162128@2x%202.png)
 
 <br/>
 
@@ -45,6 +45,8 @@ An Auto Loading &amp; Rendering MarkDown Based Blog System
   -  访问网站前先配置好 settings.php 内部内容
 + 文章发布
   - 将 .md 类型文件放入根目录 /posts 文件夹中
+  - 示例文章
+    - ![示例](https://static.ouorz.com/QQ20190512-162251@2x%202.png)
   - 文章开头必须包含（注意大写）
     - 1. Title 文章标题
     - 2. Cate 文章分类
