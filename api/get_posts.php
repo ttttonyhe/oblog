@@ -6,7 +6,7 @@
     exclude_value 为排除字段值 当字段名为 tags 时只能为一个值
 */
 
-$host = dirname(__FILE__) . '/posts/'; //要读取的文件夹
+$host = dirname(dirname(__FILE__)) . '/posts/'; //要读取的文件夹
 $filesnames = preg_grep('/^([^.])/', scandir($host)); //得到所有的文件
 $i = 0;
 $data = [];

@@ -1,11 +1,11 @@
-<?php require 'header.php'; ?>
+<?php require 'func/header.php'; ?>
 <div class="archive-banner">
     <h2><?php echo $_GET['tag'] ?></h2>
     <p class="archive-banner-badge"># 文章标签</p>
     <em class="archive-banner-count">{{ tag_info.posts_count }} 篇内容</em>
 </div>
 <div class="blog-container" v-show="loaded" style="width:60%;margin-top:5vh">
-<template v-for="(post,index) in posts" v-if="post.info.Tag !== '友情链接'">
+<template v-for="(post,index) in posts" v-if="post.info.Cate !== '伙伴链接'">
     <el-card shadow="hover" v-if="index <= display_count" class="stream-card-archive">
     <div class="archive-post-div">
     <div v-if="post.info.Img !== ':'" :style="'background-image: url('+post.info.Img+')'" class="archive-img">
@@ -36,76 +36,10 @@
     </template>
     <el-card shadow="hover" class="stream-card" v-loading="loading" v-show="loading">
     </el-card>
-    <?php require 'footer.php'; ?>
+    <?php require 'func/footer.php'; ?>
 </div>
 </transition>
-<script>
-    var md = window.markdownit({
-        html: true,
-        xhtmlOut: false,
-        breaks: true,
-        linkify: true
-    });
-    $(document).ready(function() {
-        $('#view').css('opacity', '1');
-        new Vue({
-            el: '#view',
-            data() {
-                return {
-                    loading: 1,
-                    posts: [],
-                    nav_items: [],
-                    tag_info: {
-                        'posts_count': 0
-                    },
-                    site_info: {
-                        'cates_count': 0,
-                        'tags_count': 0
-                    },
-                    display_count: 5,
-                    tags: [],
-                    cates: [],
-                    loaded: 0
-                }
-            },
-            mounted() {
-                axios.get('get_header.php')
-                    .then(e => {
-                        this.nav_items = e.data;
-                    })
-                    .then(() => {
-                        axios.get('fetch_posts.php?pos=1&tags=<?php echo $_GET['tag'] ?>')
-                            .then(e => {
-                                this.posts = e.data.posts;
-                                this.tag_info.posts_count = e.data.counts.posts_count;
-                                axios.get('get_info.php?key=tags')
-                                    .then(e => {
-                                        this.tags = e.data;
-                                        this.site_info.tags_count = e.data.counts.key_count;
-                                        axios.get('get_info.php?key=cate')
-                                            .then(e => {
-                                                this.cates = e.data;
-                                                this.site_info.cates_count = e.data.counts.key_count;
-                                                this.loaded = 1;
-                                                if (this.display_count >= this.tag_info.posts_count) {
-                                                    this.loading = 0;
-                                                }
-                                            })
-                                    })
-                            })
-                    })
-            },
-            methods: {
-                new_page: function() { //加载下一页文章列表
-                    this.display_count += 6;
-                    if (this.display_count >= this.site_info.posts_count) {
-                        this.loading = 0;
-                    }
-                },
-            }
-        })
-    })
-</script>
+<script src="js/tags.js" type="text/javascript"></script>
 </body>
 
 </html>

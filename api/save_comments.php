@@ -18,7 +18,7 @@ class post_back
     function valid_post($pid)
     {
         if (explode('-', $pid)[0] == 'page') { //页面评论
-            $host = dirname(__FILE__) . '/pages/'; //要读取的文件夹
+            $host = dirname(dirname(__FILE__)) . '/pages/'; //要读取的文件夹
             $file_path = $host . explode('-', $pid)[1] . '.md';
             if (file_exists($file_path)) {
                 return 1;
@@ -26,7 +26,7 @@ class post_back
                 return 0;
             }
         } else { //文章评论
-            $host = dirname(__FILE__) . '/posts/'; //要读取的文件夹
+            $host = dirname(dirname(__FILE__)) . '/posts/'; //要读取的文件夹
             $file_path = $host . $pid . '.md';
             if (file_exists($file_path)) {
                 return 1;
@@ -37,7 +37,7 @@ class post_back
     }
     function valid_comm_post($pid)
     {
-        $host = dirname(__FILE__) . '/comments/'; //要读取的文件夹
+        $host = dirname(dirname(__FILE__)) . '/comments/'; //要读取的文件夹
         $file_path = $host . $pid . '.json';
         if (file_exists($file_path)) {
             return 1;
@@ -73,7 +73,7 @@ if (empty($ver) || empty($name) || empty($email) || empty($content) || empty($pi
     if ($post->valid_post($pid)) { //判断文章/页面是否存在
         //处理评论内容
         if ($post->valid_comm_post($pid)) {
-            $json_string = file_get_contents(dirname(__FILE__) . '/comments/' . $pid . ".json"); // 从文件中读取数据到PHP变量
+            $json_string = file_get_contents(dirname(dirname(__FILE__)) . '/comments/' . $pid . ".json"); // 从文件中读取数据到PHP变量
             $data = json_decode($json_string, true); // 把JSON字符串转成PHP数组
             $data_length = count($data);
 
@@ -108,7 +108,7 @@ if (empty($ver) || empty($name) || empty($email) || empty($content) || empty($pi
                 $data[$data_length]['content'] = $content;
             }
             $json_strings = json_encode($data);
-            file_put_contents(dirname(__FILE__) . '/comments/' . $pid . ".json", $json_strings); //写入
+            file_put_contents(dirname(dirname(__FILE__)) . '/comments/' . $pid . ".json", $json_strings); //写入
             $array['code'] = 201;
             $array['info'] = '修改成功';
             echo json_encode($array, JSON_UNESCAPED_UNICODE);
@@ -121,7 +121,7 @@ if (empty($ver) || empty($name) || empty($email) || empty($content) || empty($pi
             $data[0]['content'] = $content;
             $json_string = json_encode($data);
             // 写入文件
-            file_put_contents(dirname(__FILE__) . '/comments/' . $pid . '.json', $json_string);
+            file_put_contents(dirname(dirname(__FILE__)) . '/comments/' . $pid . '.json', $json_string);
             $array['code'] = 202;
             $array['info'] = '创建成功';
             echo json_encode($array, JSON_UNESCAPED_UNICODE);

@@ -5,7 +5,7 @@
     key 为 cate、tags、author
 */
 
-$host = dirname(__FILE__) . '/posts/'; //要读取的文件夹
+$host = dirname(dirname(__FILE__)) . '/posts/'; //要读取的文件夹
 $filesnames = preg_grep('/^([^.])/', scandir($host)); //得到所有的文件
 $i = 0;
 $data = [];

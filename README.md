@@ -17,12 +17,12 @@ An Auto Loading &amp; Rendering MarkDown Based Blog System
 + Tags/Cates API
 + Pages API
 + Pages system
++ Directory Structure optimization
 <br/>
 
 ## Todo List
 + Add support to Markdown for comment system
 + Installing mechanism
-+ Directory Structure optimization
 + Documentation
 
 <br/>
