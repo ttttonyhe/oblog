@@ -2,8 +2,7 @@
 <link rel="stylesheet" href="md.css">
 <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
 <div class="reading-bar"></div>
-<el-collapse-transition>
-    <div class="blog-container" v-show="loading" style="width:67%">
+    <div class="blog-container" style="width:67%" v-loading="!loading">
 
         <el-row :gutter="20">
             <el-col :span="7">
@@ -48,7 +47,6 @@
     </div>
 
     </div>
-</el-collapse-transition>
 <?php require 'func/footer.php'; ?>
 <script src="js/posts.js" type="text/javascript"></script>
 </body>

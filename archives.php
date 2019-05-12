@@ -4,7 +4,7 @@
     <p class="archive-banner-badge"># 文章分类</p>
     <em class="archive-banner-count">{{ cate_info.posts_count }} 篇内容</em>
 </div>
-<div class="blog-container" v-show="loaded" style="width:60%;margin-top:5vh">
+<div class="blog-container" v-loading="!loaded" style="width:60%;margin-top:5vh">
 
     <template v-for="(post,index) in posts" v-if="post.info.Cate !== '<?php echo $site->index_exclude ?>'">
         <el-card shadow="hover" v-if="index <= display_count" class="stream-card-archive">
