@@ -141,6 +141,12 @@ a {
 
 .stream-content {
     margin-bottom: 30px;
+    color: #666;
+}
+
+.stream-content h1 h2 h3 h4 h5 p{
+    font-weight: 400;
+    letter-spacing: .5px;
 }
 
 .side-tags {
@@ -210,6 +216,7 @@ a {
     font-size: 1.7rem;
     margin: 0px;
     margin-top: 8px;
+    font-weight: 600 !important;
 }
 
 .new-header p {
