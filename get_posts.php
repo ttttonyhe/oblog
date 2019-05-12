@@ -61,7 +61,11 @@ if (empty($_GET['view'])) {
                 $data['posts'][$i]['filename'] = explode('.', $name)[0]; //获取文件名
                 for ($k = 0; $k < 5; $k++) {
                     $temp_data_array = explode(':', $file_arr[$k]);
-                    $data['posts'][$i]['info'][$fy->infofy($temp_data_array[0])] = $fy->infofy($temp_data_array[1]);
+                    if($temp_data_array[0] == 'Img'){
+                        @$data['posts'][$i]['info'][$fy->infofy($temp_data_array[0])] = $fy->infofy($temp_data_array[1]).':'.$fy->infofy($temp_data_array[2]);
+                    }else{
+                        $data['posts'][$i]['info'][$fy->infofy($temp_data_array[0])] = $fy->infofy($temp_data_array[1]);
+                    }
                 }
                 $data['posts'][$i]['info']['Date'] = date('Y/m/d H:s',filectime($file_path));
                 /* 获取文章详情结束 */
@@ -92,7 +96,11 @@ if (empty($_GET['view'])) {
         /* 获取文章详情 */
         for ($k = 0; $k < 5; $k++) {
             $temp_data_array = explode(':', $file_arr[$k]);
-            $data['info'][$fy->infofy($temp_data_array[0])] = $fy->infofy($temp_data_array[1]);
+            if($temp_data_array[0] == 'Img'){
+                @$data['info'][$fy->infofy($temp_data_array[0])] = $fy->infofy($temp_data_array[1]).':'.$fy->infofy($temp_data_array[2]);
+            }else{
+                $data['info'][$fy->infofy($temp_data_array[0])] = $fy->infofy($temp_data_array[1]);
+            }
         }
         $data['info']['Date'] = date('Y/m/d H:s',filectime($file_path));
         /* 获取文章详情结束 */

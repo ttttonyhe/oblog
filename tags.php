@@ -5,9 +5,10 @@
     <em class="archive-banner-count">{{ tag_info.posts_count }} 篇内容</em>
 </div>
 <div class="blog-container" v-show="loaded" style="width:60%;margin-top:5vh">
-    <el-card shadow="hover" v-for="(post,index) in posts" v-if="index <= display_count" class="stream-card-archive">
+<template v-for="(post,index) in posts" v-if="post.info.Tag !== '友情链接'">
+    <el-card shadow="hover" v-if="index <= display_count" class="stream-card-archive">
     <div class="archive-post-div">
-    <div :style="'background-image: url('+post.info.Img+')'" class="archive-img" v-if="!!post.info.Img">
+    <div v-if="post.info.Img !== ':'" :style="'background-image: url('+post.info.Img+')'" class="archive-img">
     </div>
     <div :style="post.info.Img ? 'width:65%' : 'width:100%'">    
     <p class="stream-info">
@@ -22,7 +23,17 @@
         </a>
 </div>
 </div>
-    </el-card>
+</el-card>
+    </template>
+
+    <template v-else>
+    <el-card shadow="hover" class="stream-card-archive-friend">
+    <div class="archive-post-div">
+            <img :src="post.info.Img" class="archive-f-img">
+            <a :href="post.filename"><h1 v-html="post.info.Title" class="archive-f-h1"></h1></a>
+            <p v-html="post.content" class="archive-f-p"></p>
+        </el-card>
+    </template>
     <el-card shadow="hover" class="stream-card" v-loading="loading" v-show="loading">
     </el-card>
     <?php require 'footer.php'; ?>

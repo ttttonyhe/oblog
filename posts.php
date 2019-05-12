@@ -104,11 +104,11 @@
                             <div v-if="!!comment.comment_reply">
                                 <p class="comments-reply-badge">正在对第 {{ comment.comment_reply }} 条评论进行回复 <button @click="reply('c')">取消 X</button></p>
                             </div>
-                            <el-input type="textarea" placeholder="说点啥吧..." v-model.trim="comment.comment_content" class="comments-send" row="4">
+                            <el-input type="textarea" placeholder="说点啥吧..." v-model="comment.comment_content" class="comments-send" row="4">
                             </el-input>
                             <div style="display: flex;width: 60%;">
-                                <el-input placeholder="你的昵称" v-model.trim="comment.comment_name"></el-input>
-                                <el-input placeholder="你的邮箱" v-model.trim="comment.comment_email" style="margin-left:20px"></el-input>
+                                <el-input placeholder="你的昵称" v-model="comment.comment_name"></el-input>
+                                <el-input placeholder="你的邮箱" v-model="comment.comment_email" style="margin-left:20px"></el-input>
                             </div>
                             <el-button type="primary" @click="send_comment('default')" style="float: right;
     margin-top: -40px;">提交评论</el-button>
@@ -125,6 +125,28 @@
     </div>
 </el-collapse-transition>
 <script>
+    let cookie = {
+    "set": function setCookie(name, value) {
+        var Days = 30;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+    },
+    "get": function getCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        if (arr = document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    },
+    "del": function delCookie(name) {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval = cookie.get(name);
+        if (cval != null)
+            document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+    }
+}
 
     function time(time) {
         var newDate = new Date();
@@ -158,8 +180,8 @@
                     comments: null,
                     comment: {
                         comment_content: null,
-                        comment_name: null,
-                        comment_email: null,
+                        comment_name: cookie.get('oblog_comment_name'),
+                        comment_email: cookie.get('oblog_comment_email'),
                         comment_reply: null
                     }
                 }
@@ -169,7 +191,7 @@
                     .then(e => {
                         this.nav_items = e.data;
                     })
-                axios.get('get_posts.php?view=' + '<?php echo $_GET['view']; ?>')
+                axios.get('get_posts.php?view=' + '<?php echo urldecode($_GET['view']); ?>')
                     .then(e => {
                         this.post = e.data;
                         this.title = this.post.info.Title;
@@ -181,7 +203,7 @@
                         this.content = md.render(this.post.content);
                         this.loading = 1;
 
-                        axios.get('comments/<?php echo $_GET['view'] ?>.json')
+                        axios.get('comments/<?php echo urldecode($_GET['view']) ?>.json')
                             .then(e => {
                                 this.comments = e.data;
                             })
@@ -312,7 +334,7 @@
                             params.append('name', this.comment.comment_name);
                             params.append('email', this.comment.comment_email);
                             params.append('content', this.comment.comment_content);
-                            params.append('pid', <?php echo $_GET['view'] ?>);
+                            params.append('pid', '<?php echo $_GET['view'] ?>');
                             params.append('ver', 'comment_ver');
                             axios.post('save_comments.php', params)
                                 .then(response => {
@@ -322,18 +344,19 @@
                                         message: '提交成功',
                                         type: 'success'
                                     });
-                                    axios.get('comments/<?php echo $_GET['view'] ?>.json')
+                                    axios.get('comments/<?php echo urldecode($_GET['view']) ?>.json?nocache=' + (new Date()).getTime())
                                         .then(e => {
                                             this.comments = e.data;
                                         })
-
+                                    cookie.set('oblog_comment_name',this.comment.comment_name);
+                                    cookie.set('oblog_comment_email',this.comment.comment_email);
                                 });
                         } else {
                             var params = new URLSearchParams();
                             params.append('name', this.comment.comment_name);
                             params.append('email', this.comment.comment_email);
                             params.append('content', this.comment.comment_content);
-                            params.append('pid', <?php echo $_GET['view'] ?>);
+                            params.append('pid', '<?php echo $_GET['view'] ?>');
                             params.append('ver', 'comment_ver');
                             params.append('reply', this.comment.comment_reply - 1);
                             axios.post('save_comments.php', params)
@@ -344,7 +367,7 @@
                                         message: '提交成功',
                                         type: 'success'
                                     });
-                                    axios.get('comments/<?php echo $_GET['view'] ?>.json')
+                                    axios.get('comments/<?php echo urldecode($_GET['view']) ?>.json?nocache=' + (new Date()).getTime())
                                         .then(e => {
                                             this.comments = e.data;
                                         })

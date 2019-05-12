@@ -464,12 +464,13 @@ a {
 .comments-list ul{
     list-style-type: none;
     padding: 0px;
+    margin: 0px;
 }
 
 .comments-list ul li{
     display: flex;
     border-bottom: 1px solid #eee;
-    padding: 5px 20px 15px 20px;
+    padding: 20px 20px;
     transition: all .2s;
 }
 
@@ -601,4 +602,43 @@ a {
     padding-left: 10px;
     color:#333;
     margin: 20px 0px
+}
+
+.stream-card-archive-friend{
+    padding: 0px;
+    width: 30%;
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-left: 3.33333%
+}
+
+.stream-card-archive-friend:nth-child(3n-2){
+    margin-left: 0px !important;
+}
+
+.archive-f-p{
+    margin-top: 5px;
+    color: #999;
+    font-size: 1.2rem;
+    letter-spacing: .5px;
+}
+
+.archive-f-h1{
+    display: inline-block;
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+.archive-f-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: -9px;
+}
+
+.archive-post-div a{
+    color: #333;
+    text-decoration: none;
 }

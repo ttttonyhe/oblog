@@ -74,7 +74,7 @@
                     </el-card>
 
                     <el-card shadow="hover" v-for="(post,index) in posts" v-if="index <= display_count" class="stream-card">
-                        <img :src="post.info.Img" v-if="!!post.info.Img">
+                        <img :src="post.info.Img" v-if="!!post.info.Img && post.info.Img !== ':'">
                         <p class="stream-info">
                             <em>{{ post.info.Author ? post.info.Author : 'Whoever'}}</em>
                             <em>{{ post.info.Date ? post.info.Date : 'Whenever'}}</em>

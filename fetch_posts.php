@@ -11,6 +11,7 @@ $filesnames = preg_grep('/^([^.])/', scandir($host)); //得到所有的文件
 $i = 0;
 $data = [];
 $fetch_count = 0;
+$current = 0;
 
 class fy
 {
@@ -47,6 +48,7 @@ if (!empty($_GET['author']) && empty($_GET['cate']) && empty($_GET['tags'])) {
 
 if (!empty($get_method)) {
     foreach ($filesnames as $name) {
+        ++$i;
             $file_path = $host . $name;
             if (file_exists($file_path)) {
                 $file_arr = file($file_path);
@@ -142,23 +144,28 @@ if (!empty($get_method)) {
                 /* 获取文章详情结束 */
 
                 if ($status) { //匹配请求条件的文章
-                    $data['posts'][$i]['filename'] = explode('.', $name)[0];
+                    $data['posts'][$current]['filename'] = explode('.', $name)[0];
                     for ($k = 0; $k < 5; $k++) { //获取当前文章信息
                         $temp_data_array = explode(':', $file_arr[$k]);
-                        $data['posts'][$i]['info'][$fy->infofy($temp_data_array[0])] = $fy->infofy($temp_data_array[1]);
+                        if($temp_data_array[0] == 'Img'){
+                            @$data['posts'][$current]['info'][$fy->infofy($temp_data_array[0])] = $fy->infofy($temp_data_array[1]).':'.$fy->infofy($temp_data_array[2]);
+                        }else{
+                            $data['posts'][$current]['info'][$fy->infofy($temp_data_array[0])] = $fy->infofy($temp_data_array[1]);
+                        }
                     }
-                    $data['posts'][$i]['info']['Date'] = date('Y/m/d H:s',filectime($file_path));
+                    $data['posts'][$current]['info']['Date'] = date('Y/m/d H:s',filectime($file_path));
                     /* 获取文章内容 */
                     $temp_data_content = '';
                     for ($j = 5; $j < count($file_arr); $j++) {
                         $temp_data_content .= $fy->contentfy($file_arr[$j]);
                     }
                     if(!empty($_GET['pos']) && $_GET['pos'] == 1){
-                        $data['posts'][$i]['content'] = mb_substr($temp_data_content,0,90,'utf8');
+                        $data['posts'][$current]['content'] = mb_substr($temp_data_content,0,90,'utf8');
                     }else{
-                        $data['posts'][$i]['content'] = $temp_data_content;
+                        $data['posts'][$current]['content'] = $temp_data_content;
                     }
                     /* 获取文章内容结束 */
+                    $current++;
                 }
             }
         }
