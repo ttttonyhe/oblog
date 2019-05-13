@@ -1,43 +1,51 @@
 <div align="center">
   <h1>OBlog</h1>
-  <blockquote>An Auto Loading & Rendering MarkDown Based Blog System</blockquote>
+  <p>An Auto Loading & Rendering MarkDown Based Blog System</p>
   <a href="https://github.com/HelipengTony/oblog">
-    <img src="https://img.shields.io/github/forks/HelipengTony/oblog.svg" alt="release">
+    <img src="https://img.shields.io/github/forks/HelipengTony/oblog.svg" alt="forks">
   </a>
 
   <a href="https://github.com/HelipengTony/oblog">
-    <img src="https://img.shields.io/github/stars/HelipengTony/oblog.svg" alt="release-date">
+    <img src="https://img.shields.io/github/stars/HelipengTony/oblog.svg" alt="stars">
   </a>
 
   <a href="https://github.com/HelipengTony/oblog">
-    <img src="https://img.shields.io/github/license/HelipengTony/" alt="download">
+    <img src="https://img.shields.io/github/license/HelipengTony/oblog.svg" alt="license">
   </a>
 </div>
 
 <br/>
 
-## Thumbnail
-### Home Page 首页
+<br/>
+
 ![首页 index](https://static.ouorz.com/QQ20190512-161843@2x%202.png)
 
 <br/>
 
 ## Main Features
-+ Based on Vue.js & Element UI 
++ Based on Vue.js & Element UI
+<br/>
 基于 Vue.js 与 Element UI
 + Markdown auto rendering
+<br/>
 Markdown 自动解析
 + Posts/Pages system
+<br/>
 支持文章/页面系统
 + Neet UI design
+<br/>
 美丽的 UI 设计与自适应
 + 0 sql everywhere
+<br/>
 完全无数据库 (评论系统基于 json)
 + Comments system
+<br/>
 强大的内置评论系统
 + Archive system
+<br/>
 支持分类/标签页
 + Easy to do secondary development
+<br/>
 易于二次开发
 
 <br/>
