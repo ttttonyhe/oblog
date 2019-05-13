@@ -24,21 +24,21 @@
 
 ## Main Features
 + Based on Vue.js & Element UI
-- 基于 Vue.js 与 Element UI
+  - 基于 Vue.js 与 Element UI
 + Markdown auto rendering
-- Markdown 自动解析
+  - Markdown 自动解析
 + Posts/Pages system
-- 支持文章/页面系统
+  - 支持文章/页面系统
 + Neet UI design
-- 美丽的 UI 设计与自适应
+  - 美丽的 UI 设计与自适应
 + 0 sql everywhere
-- 完全无数据库 (评论系统基于 json)
+  - 完全无数据库 (评论系统基于 json)
 + Comments system
-- 强大的内置评论系统
+  - 强大的内置评论系统
 + Archive system
-- 支持分类/标签页
+  - 支持分类/标签页
 + Easy to do secondary development
-- 易于二次开发
+  - 易于二次开发
 
 <br/>
 
