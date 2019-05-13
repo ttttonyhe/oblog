@@ -24,29 +24,21 @@
 
 ## Main Features
 + Based on Vue.js & Element UI
-<br/>
-基于 Vue.js 与 Element UI
+- 基于 Vue.js 与 Element UI
 + Markdown auto rendering
-<br/>
-Markdown 自动解析
+- Markdown 自动解析
 + Posts/Pages system
-<br/>
-支持文章/页面系统
+- 支持文章/页面系统
 + Neet UI design
-<br/>
-美丽的 UI 设计与自适应
+- 美丽的 UI 设计与自适应
 + 0 sql everywhere
-<br/>
-完全无数据库 (评论系统基于 json)
+- 完全无数据库 (评论系统基于 json)
 + Comments system
-<br/>
-强大的内置评论系统
+- 强大的内置评论系统
 + Archive system
-<br/>
-支持分类/标签页
+- 支持分类/标签页
 + Easy to do secondary development
-<br/>
-易于二次开发
+- 易于二次开发
 
 <br/>
 
@@ -58,8 +50,14 @@ Markdown 自动解析
 
 + 文章发布
   - 将 .md 类型文件放入根目录 /posts 文件夹中
-  - 示例文章
+  - 示例文章:
+
+  <br/>
+
   ![示例](https://static.ouorz.com/QQ20190512-162251@2x%202.png)
+
+  <br/>
+
   - 文章开头必须包含（注意大写）
     - 1. Title 文章标题
     - 2. Cate 文章分类
