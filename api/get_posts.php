@@ -11,6 +11,7 @@ $filesnames = preg_grep('/^([^.])/', scandir($host)); //得到所有的文件
 $i = 0;
 $data = [];
 $count = 0;
+$filetime_sort = array();
 
 class fy
 {
@@ -81,6 +82,9 @@ if (empty($_GET['view'])) {
                     $data['posts'][$i]['content'] = $temp_data_content;
                 }
                 /* 获取文章内容结束 */
+                
+                //获取当前文件创建日期用以排序
+                $filetime_sort[] = date ( "Y-m-d H:i:s", filemtime ( $file_path) );
             }
         }
     }
@@ -115,4 +119,10 @@ if (empty($_GET['view'])) {
     }
 }
 
-echo json_encode($data);
+$data = array_merge($data); //重置数组下标
+if (empty($_GET['view'])) {
+    array_multisort($filetime_sort,SORT_DESC,SORT_STRING, $data['posts']); //按创建时间排序
+}
+
+//输出 json
+echo json_encode($data, JSON_UNESCAPED_UNICODE);

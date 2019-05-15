@@ -12,6 +12,7 @@ $i = 0;
 $data = [];
 $fetch_count = 0;
 $current = 0;
+$filetime_sort = array();
 
 class fy
 {
@@ -166,6 +167,9 @@ if (!empty($get_method)) {
                 }
                 /* 获取文章内容结束 */
                 $current++;
+
+                //获取当前文件创建日期用以排序
+                $filetime_sort[] = date ( "Y-m-d H:i:s", filemtime ( $file_path) );
             }
         }
     }
@@ -173,4 +177,9 @@ if (!empty($get_method)) {
 } else {
     $data['code'] = 'Invalid Request';
 }
-echo json_encode($data);
+
+$data = array_merge($data); //重置数组下标
+array_multisort($filetime_sort,SORT_DESC,SORT_STRING, $data['posts']); //按创建时间排序
+
+//输出 json
+echo json_encode($data,JSON_UNESCAPED_UNICODE);

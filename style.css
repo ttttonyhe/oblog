@@ -144,8 +144,8 @@ a {
     color: #666;
 }
 
-.stream-content h1 h2 h3 h4 h5 p{
-    font-weight: 400;
+.stream-content h1,h2,h3,h4,h5,p{
+    font-weight: normal;
     letter-spacing: .5px;
 }
 
@@ -371,6 +371,7 @@ a {
     top: 0px;
     left: 0px;
     z-index: 999;
+    transition: all .1s;
 }
 
 .blog-container {
@@ -436,7 +437,7 @@ a {
 
 .archive-banner {
     width: 100%;
-    height: 22vh;
+    height: 23.5vh;
     background: rgb(248, 249, 250);
     text-align: center;
     padding-top: 11vh;
