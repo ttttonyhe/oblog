@@ -70,6 +70,7 @@ $(document).ready(function () {
                 tags: '',
                 content: ' ',
                 comments: null,
+                comment_loading : false,
                 comment: {
                     comment_content: null,
                     comment_name: cookie.get('oblog_comment_name'),
@@ -221,6 +222,7 @@ $(document).ready(function () {
                         type: 'error'
                     });
                 } else {
+                    this.comment_loading = true;
                     if (!this.comment.comment_reply) {
                         var params = new URLSearchParams();
                         params.append('name', this.comment.comment_name);
@@ -242,8 +244,10 @@ $(document).ready(function () {
                                     })
                                 cookie.set('oblog_comment_name', this.comment.comment_name);
                                 cookie.set('oblog_comment_email', this.comment.comment_email);
+                                this.comment_loading = false;
                             });
                     } else {
+                        this.comment_loading = true;
                         var params = new URLSearchParams();
                         params.append('name', this.comment.comment_name);
                         params.append('email', this.comment.comment_email);
@@ -262,6 +266,7 @@ $(document).ready(function () {
                                 axios.get('comments/' + view_id + '.json?nocache=' + (new Date()).getTime())
                                     .then(e => {
                                         this.comments = e.data;
+                                        this.comment_loading = false;
                                     })
                             })
                     }

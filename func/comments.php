@@ -42,7 +42,7 @@
                 <el-input placeholder="你的邮箱" v-model="comment.comment_email" style="margin-left:20px"></el-input>
             </div>
             <el-button type="primary" @click="send_comment('default')" style="float: right;
-    margin-top: -40px;">提交评论</el-button>
+    margin-top: -40px;" :loading="comment_loading">提交评论</el-button>
         </div>
     </div>
 </el-tooltip>
