@@ -54,16 +54,16 @@ class site_info{
     //'名称','链接'
     public $header = array(
         array(
-            '首页','http://localhost/oblog'
+            '首页','/'
         ),
         array(
             '博客','https://www.ouorz.com'
         ),
         array(
-            '伙伴','http://localhost/oblog/archives.php?cate=伙伴链接'
+            '伙伴','/archives.php?cate=伙伴链接'
         ),
         array(
-            '关于','https://www.ouorz.com/126'
+            '关于','https://www.ouorz.com/post/126'
         )
     );
 
