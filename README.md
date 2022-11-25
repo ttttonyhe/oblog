@@ -1,3 +1,7 @@
+> **Warning**: Legacy code alert!
+
+<br/>
+
 <div align="center">
   <h1>OBlog</h1>
   <p>An Auto Loading & Rendering MarkDown Based Blog System</p>
